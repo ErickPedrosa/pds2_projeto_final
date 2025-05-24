@@ -11,8 +11,8 @@
 [Ll]og/
 
 ## Ignore pacotes NuGet baixados
-#packages/
-#*.nupkg
+packages/
+*.nupkg
 
 ## Arquivos de configuração local
 *.localhistory
