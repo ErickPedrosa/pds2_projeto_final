@@ -1,0 +1,77 @@
+## Ignore arquivos de build e temporários do Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Ignore diretórios de build
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+
+## Ignore pacotes NuGet baixados
+#packages/
+#*.nupkg
+
+## Arquivos de configuração local
+*.localhistory
+*.orig
+*.cache
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+
+## Arquivos de lock do Visual Studio
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## Arquivos gerados por ferramentas
+_ReSharper*/
+*.resharper
+*.DotSettings.user
+*.sln.ide
+
+## Logs e arquivos temporários
+*.log
+*.tlog
+*.tmp
+*.bak
+*.swp
+*~ 
+
+## Arquivos de publicação
+publish/
+*.publishsettings
+
+## Configurações específicas de IDEs
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+## Ignore diretórios de testes (se forem temporários)
+TestResults/
+*.TestResults
+
+## Configuração de dependências global
+global.json
+
+## Arquivos de cache do Rider
+.idea/
+
+## Arquivos de backup
+*.bak
+*.old
+*.backup
+*.tmp
+
+## Sistema operacional
+.DS_Store
+Thumbs.db
+
+## Arquivos ocultos do Windows
+ehthumbs.db
+desktop.ini
