@@ -3,7 +3,7 @@
 #include <allegro5/allegro.h>
 
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
-#include "Lib/doctest/doctest/doctest.h"
+#include "lib/doctest/doctest/doctest.h"
 
 int fact(int n) {
 	return n <= 1 ? n : fact(n - 1) * n;
