@@ -15,4 +15,5 @@ TEST_CASE("Testing the fatorial function") {
 	CHECK(fact(2) == 2);
 	CHECK(fact(3) == 6);
 	CHECK(fact(10) == 3628800);
+
 }
