@@ -4,6 +4,7 @@
 
 #include "../include/TelaInicial.hpp"
 #include "../include/TelaDeJogo.hpp"
+#include "../include/Passaro.hpp"
 
 #define SUCESSO 0
 
@@ -14,7 +15,7 @@ int main(int argc, char** argv) {
 	al_init();
 	al_install_keyboard();
 	
-	ALLEGRO_TIMER* timer = al_create_timer(1.0 / 30.0);
+	ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60.0);
 	ALLEGRO_EVENT_QUEUE* filaEventos = al_create_event_queue();
 
 	ALLEGRO_DISPLAY* disp = al_create_display(1280, 800);
@@ -30,9 +31,11 @@ int main(int argc, char** argv) {
 	
 	TelaInicial* telaInicio = new TelaInicial();
 	TelaDeJogo *telaJogo = new TelaDeJogo();
+	Passaro* flappy = new Passaro();
 
 
 	bool inicio = true;
+	bool pulo = false;
 
 	al_start_timer(timer);
 	while (1)
@@ -49,24 +52,45 @@ int main(int argc, char** argv) {
 		if (evento.type == ALLEGRO_EVENT_KEY_DOWN) {
 			
 			switch (evento.keyboard.keycode) {
-			case ALLEGRO_KEY_UP:
+			case ALLEGRO_KEY_C:
 				inicio = false;
 				break;
-			case ALLEGRO_KEY_DOWN:
+			case ALLEGRO_KEY_X:
 				inicio = true;
+				break;
+			case ALLEGRO_KEY_UP:
+				pulo = true;
+				break;
+			case ALLEGRO_KEY_SPACE:
+				pulo = true;
 				break;
 			}
 		}
 
+		if (evento.type == ALLEGRO_EVENT_KEY_UP) {
+			pulo = false;
+		}
+
+		al_clear_to_color(al_map_rgb(0, 0, 0));
+
+
 		if (inicio)
 		{
 			telaInicio->Render(al_get_display_height(disp), al_get_display_width(disp));
+			
 		}
 		else
 		{
 			telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
+			flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 0);
+
+
+			if (pulo) {
+				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
+			}
 		}
 		
+		al_flip_display();
 
 	}
 

@@ -11,23 +11,23 @@ TelaDeJogo::TelaDeJogo() {
         //Trown error
     }
 
-    fundo = al_load_bitmap("assets/background-day.png");
+    sprite = al_load_bitmap("assets/background-day.png");
 }
 
 
 TelaDeJogo::~TelaDeJogo() {
-    al_destroy_bitmap(fundo);
+    al_destroy_bitmap(sprite);
 
 
 
 }
 
 void TelaDeJogo::Render(float display_height, float display_width) {
-    al_clear_to_color(al_map_rgb(0, 0, 0));
+ 
 
 
-    int img_w = al_get_bitmap_width(fundo);
-    int img_h = al_get_bitmap_height(fundo);
+    int img_w = al_get_bitmap_width(sprite);
+    int img_h = al_get_bitmap_height(sprite);
 
 
     int num_tiles = 5;
@@ -46,7 +46,7 @@ void TelaDeJogo::Render(float display_height, float display_width) {
         float dy = 0;
 
         al_draw_scaled_bitmap(
-            fundo,
+            sprite,
             0, 0, img_w, img_h,
             dx, dy,
             img_w * escala_w,
@@ -55,6 +55,4 @@ void TelaDeJogo::Render(float display_height, float display_width) {
         );
     }
 
-
-    al_flip_display();
 }

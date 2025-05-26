@@ -140,12 +140,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="root\include\IRenderizavel.hpp" />
     <ClCompile Include="root\Origem.cpp" />
     <ClCompile Include="root\src\Main.cpp" />
+    <ClCompile Include="root\src\Passaro.cpp" />
     <ClCompile Include="root\src\TelaDeJogo.cpp" />
     <ClCompile Include="root\src\TelaInicial.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="root\include\Passaro.hpp" />
     <ClInclude Include="root\include\TelaDeJogo.hpp" />
     <ClInclude Include="root\include\TelaInicial.hpp" />
   </ItemGroup>

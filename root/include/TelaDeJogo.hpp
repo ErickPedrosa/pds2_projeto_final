@@ -3,19 +3,19 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
+#include "../include/IRenderizavel.hpp"
 
 
-class TelaDeJogo {
+class TelaDeJogo : IRenderizavel{
 private:
 	int x_atual;
 	int y_atual;
-	ALLEGRO_BITMAP* fundo;
 	//InfoJogadores
 
 public:
 	TelaDeJogo();
 	~TelaDeJogo();
-	void Render(float display_height, float display_width);
+	void Render(float display_height, float display_width) override;
 
 
 };
