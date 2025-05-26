@@ -1,7 +1,7 @@
 #include "../include/TelaInicial.hpp"
 #include <iostream>
 
-TelaInicial::TelaInicial() : x_atual(0), y_atual(0) {
+TelaInicial::TelaInicial(float display_height, float display_width) : x_atual(0), y_atual(0) {
     if (!al_init_image_addon())
     {
         std::cout <<"couldn't initialize image addon" << std::endl;
@@ -9,15 +9,56 @@ TelaInicial::TelaInicial() : x_atual(0), y_atual(0) {
     }
 
     sprite = al_load_bitmap("assets/background-night.png");
+
+    int botao_height = 100;
+    int botao_width = 300;
+
+    jogar = new Botao( (display_width/2) - (botao_width/2), (display_height / 2) - (botao_height * 1.5),
+                        botao_width, botao_height, al_map_rgb(255, 255, 255),
+                        "Jogar", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+    );
+
+    placar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) ,
+        botao_width, botao_height, al_map_rgb(255, 255, 255),
+        "Placar", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+    );
+
+    sair = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) + (botao_height * 1.5),
+        botao_width, botao_height, al_map_rgb(255, 255, 255),
+        "Sair", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+    );
+
 }
+
 
 
 TelaInicial::~TelaInicial() {
     al_destroy_bitmap(sprite);
 
+    delete(jogar);
+    delete(placar);
+    delete(sair);
 
 
 }
+
+int TelaInicial::VerificaClique(int _x, int _y) {
+    if (jogar->FoiClicado(_x, _y)) {
+        return 2; //Vai para a tela de cadastro;
+    }
+
+    if (placar->FoiClicado(_x, _y)) {
+        return 1; //Vai para a tela de placar;
+    }
+
+    if (sair->FoiClicado(_x, _y)) {
+        return -1; //Vai para a tela de cadastro;
+    }
+
+
+    return 0;
+}
+
 
 void TelaInicial::Render(float display_height, float display_width) {
    
@@ -51,6 +92,10 @@ void TelaInicial::Render(float display_height, float display_width) {
             0
         );
     }
+
+    jogar->GerarBotao();
+    placar->GerarBotao();
+    sair->GerarBotao();
 
 
 }

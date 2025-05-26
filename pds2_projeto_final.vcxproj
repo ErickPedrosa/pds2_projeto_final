@@ -144,13 +144,18 @@
     <ClCompile Include="root\Origem.cpp" />
     <ClCompile Include="root\src\Main.cpp" />
     <ClCompile Include="root\src\Passaro.cpp" />
+    <ClCompile Include="root\src\TelaCadastro.cpp" />
     <ClCompile Include="root\src\TelaDeJogo.cpp" />
     <ClCompile Include="root\src\TelaInicial.cpp" />
+    <ClCompile Include="root\src\TelaPlacar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="root\include\Botao.hpp" />
     <ClInclude Include="root\include\Passaro.hpp" />
+    <ClInclude Include="root\include\TelaCadastro.hpp" />
     <ClInclude Include="root\include\TelaDeJogo.hpp" />
     <ClInclude Include="root\include\TelaInicial.hpp" />
+    <ClInclude Include="root\include\TelaPlacar.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
