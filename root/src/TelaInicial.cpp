@@ -1,7 +1,7 @@
 #include "../include/TelaInicial.hpp"
 #include <iostream>
 
-TelaInicial::TelaInicial() {
+TelaInicial::TelaInicial() : x_atual(0), y_atual(0) {
     if (!al_init_image_addon())
     {
         std::cout <<"couldn't initialize image addon" << std::endl;
@@ -29,13 +29,17 @@ void TelaInicial::Render(float display_height, float display_width) {
 
     int num_tiles = 5;
 
-    float escala_w = display_width / (num_tiles * img_w);
+    float escala_w = display_width / ((num_tiles - 1) * img_w);
     float escala_h = display_height / img_h;
 
 
+    x_atual -= 1;
+    if (x_atual <= -img_w * escala_w) {
+        x_atual += img_w * escala_w;
+    }
 
     for (int i = 0; i < num_tiles; i++) {
-        float dx = i * img_w * escala_w;  
+        float dx =  (i * img_w * escala_w) + x_atual;  
         float dy = 0;                 
 
         al_draw_scaled_bitmap(

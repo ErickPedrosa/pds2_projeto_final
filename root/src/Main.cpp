@@ -47,19 +47,31 @@ int main(int argc, char** argv) {
 
 
 		if (evento.type == ALLEGRO_EVENT_KEY_DOWN) {
-			inicio = false;
-			telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
+			
+			switch (evento.keyboard.keycode) {
+			case ALLEGRO_KEY_UP:
+				inicio = false;
+				break;
+			case ALLEGRO_KEY_DOWN:
+				inicio = true;
+				break;
+			}
 		}
 
 		if (inicio)
 		{
 			telaInicio->Render(al_get_display_height(disp), al_get_display_width(disp));
 		}
+		else
+		{
+			telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
+		}
 		
 
 	}
 
 	delete(telaInicio);
+	delete(telaJogo);
 
 	al_destroy_font(font);
 	al_destroy_display(disp);

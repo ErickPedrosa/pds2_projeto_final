@@ -7,6 +7,8 @@
 
 class TelaInicial {
 	private:
+		int x_atual;
+		int y_atual;
 		ALLEGRO_BITMAP* fundo;
 		//InfoJogadores
 
