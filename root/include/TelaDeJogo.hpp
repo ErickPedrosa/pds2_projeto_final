@@ -17,6 +17,11 @@ public:
 	~TelaDeJogo();
 	void Render(float display_height, float display_width) override;
 
+	float getX() const;
+	float getY() const;
+	float getWidth() const;
+	float getHeight() const;
+
 
 };
 

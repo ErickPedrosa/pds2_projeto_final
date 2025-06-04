@@ -18,6 +18,10 @@ public:
 	void Render(float display_height, float display_width) override; //int op: 0 - Estado normal (passáro caindo) / 1 - Estado pulando 
 	void Render(float display_height, float display_width, int op); //int op: 0 - Estado normal (passáro caindo) / 1 - Estado pulando 
 
+	float getX() const;
+	float getY() const;
+	float getWidth() const;
+	float getHeight() const;
 
 };
 

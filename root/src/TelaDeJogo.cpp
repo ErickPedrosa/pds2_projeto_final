@@ -56,3 +56,8 @@ void TelaDeJogo::Render(float display_height, float display_width) {
     }
 
 }
+
+float TelaDeJogo::getX() const { return 0; }
+float TelaDeJogo::getY() const { return 0; }
+float TelaDeJogo::getWidth() const { return al_get_bitmap_width(sprite); }
+float TelaDeJogo::getHeight() const { return al_get_bitmap_height(sprite); }

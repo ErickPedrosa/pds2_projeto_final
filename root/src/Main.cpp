@@ -9,6 +9,9 @@
 #include "../include/TelaPlacar.hpp"
 #include "../include/TelaDeJogo.hpp"
 #include "../include/Passaro.hpp"
+#include "../../Colisao.hpp"
+
+
 
 #define SUCESSO 0
 
@@ -48,6 +51,7 @@ int main(int argc, char** argv) {
 	TelaPlacar* telaPlacar = new TelaPlacar(al_get_display_height(disp), al_get_display_width(disp));
 	TelaDeJogo *telaJogo = new TelaDeJogo();
 	Passaro* flappy = new Passaro();
+	Colisao* colide = new Colisao();
 
 
 	//Variáveis de controle do jogo
@@ -141,6 +145,7 @@ int main(int argc, char** argv) {
 		//Limpa a tela
 		al_clear_to_color(al_map_rgb(0, 0, 0));
 
+		
 
 		//Condicionais para verificar qual tela deve ser mostrada
 		switch (telaAtual)
@@ -165,6 +170,10 @@ int main(int argc, char** argv) {
 
 			if (pulo) {
 				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
+				if (colide->colidiu(flappy, telaJogo)) {
+					return 0;
+					//mandar para a tela de game over
+				}
 			}
 
 			break;
@@ -185,6 +194,7 @@ int main(int argc, char** argv) {
 	delete(telaPlacar);
 	delete(telaJogo);
 	delete(flappy);
+	delete(colide);
 
 
 	//Destruição dos módulos do Allegro
