@@ -1,4 +1,4 @@
-#include "Colisao.hpp"
+#include "../include/Colisao.hpp"
 #include <allegro5/allegro.h>
 
 
@@ -7,7 +7,7 @@
 bool Colisao::colidiu(const Passaro* flappy, const TelaDeJogo* telajogo) {
 	
 		
-	return (flappy->getY() < 0 || flappy->getY() + flappy->getHeight() > telajogo->getHeight());
+	return (flappy->getY() < (0 - flappy->getHeight()) || flappy->getY() + flappy->getHeight() > telajogo->getHeight());
 	
 }
 

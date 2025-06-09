@@ -39,7 +39,7 @@
     <ClCompile Include="root\Origem.cpp">
       <Filter>Arquivos de Recurso</Filter>
     </ClCompile>
-    <ClCompile Include="Colisao.cpp">
+    <ClCompile Include="root\src\Colisao.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
@@ -62,10 +62,13 @@
     <ClInclude Include="root\include\TelaPlacar.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Colisao.hpp">
+    <ClInclude Include="root\include\Colisao.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
     <ClInclude Include="Hitbox.hpp">
+      <Filter>Arquivos de Cabeçalho</Filter>
+    </ClInclude>
+    <ClInclude Include="root\include\ObjetoJogo.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>

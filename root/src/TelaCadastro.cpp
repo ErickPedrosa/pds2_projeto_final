@@ -1,7 +1,10 @@
 #include "../include/TelaCadastro.hpp"
 #include <iostream>
 
-TelaCadastro::TelaCadastro(float display_height, float display_width) : x_atual(0), y_atual(0) {
+TelaCadastro::TelaCadastro(float display_height, float display_width){
+    x_atual = 0;
+    y_atual = 0;
+
     if (!al_init_image_addon())
     {
         std::cout << "couldn't initialize image addon" << std::endl;
@@ -64,8 +67,8 @@ void TelaCadastro::Render(float display_height, float display_width) {
 
 
 
-    int img_w = al_get_bitmap_width(sprite);
-    int img_h = al_get_bitmap_height(sprite);
+    int img_w = this->getWidth();
+    int img_h = this->getHeight();
 
 
     int num_tiles = 5;
