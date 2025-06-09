@@ -3,21 +3,16 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
-#include "../include/IRenderizavel.hpp"
+#include "../include/ObjetoJogo.hpp"
 #include "../include/Botao.hpp"
 
 
-class TelaCadastro : IRenderizavel {
+class TelaCadastro : public ObjetoJogo {
 private:
-	int x_atual;
-	int y_atual;
-
 	Botao* cadastrar;
 	Botao* logar;
 	Botao* voltar;
 
-
-	//InfoJogadores
 
 public:
 	TelaCadastro(float display_height, float display_width);

@@ -3,25 +3,21 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
-#include "../include/IRenderizavel.hpp"
+#include "../include/ObjetoJogo.hpp"
 
-class Passaro : IRenderizavel{
-private:
-	int x_atual;
-	int y_atual;
-
-	//InfoJogadores
+class Passaro : public ObjetoJogo{
+protected:
+	int escala;
 
 public:
 	Passaro();
 	~Passaro();
 	void Render(float display_height, float display_width) override; //int op: 0 - Estado normal (passáro caindo) / 1 - Estado pulando 
 	void Render(float display_height, float display_width, int op); //int op: 0 - Estado normal (passáro caindo) / 1 - Estado pulando 
+	void Restart();
 
-	float getX() const;
-	float getY() const;
-	float getWidth() const;
-	float getHeight() const;
+	float getWidth() const override;
+	float getHeight() const override;
 
 };
 

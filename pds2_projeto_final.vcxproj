@@ -140,7 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Colisao.cpp" />
+    <ClCompile Include="root\src\Colisao.cpp" />
     <ClCompile Include="root\include\IRenderizavel.hpp" />
     <ClCompile Include="root\Origem.cpp" />
     <ClCompile Include="root\src\Main.cpp" />
@@ -152,8 +152,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hitbox.hpp" />
-    <ClInclude Include="Colisao.hpp" />
+    <ClInclude Include="root\include\Colisao.hpp" />
     <ClInclude Include="root\include\Botao.hpp" />
+    <ClInclude Include="root\include\ObjetoJogo.hpp" />
     <ClInclude Include="root\include\Passaro.hpp" />
     <ClInclude Include="root\include\TelaCadastro.hpp" />
     <ClInclude Include="root\include\TelaDeJogo.hpp" />
