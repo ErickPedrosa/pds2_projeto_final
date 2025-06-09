@@ -1,6 +1,13 @@
 #include "../include/TelaCadastro.hpp"
 #include <iostream>
 
+#define TELA_INICIO 0
+#define TELA_PLACAR 1
+#define TELA_CADASTRO 2
+#define TELA_JOGO 3
+#define TELA_SAIR -1
+
+
 TelaCadastro::TelaCadastro(float display_height, float display_width){
     x_atual = 0;
     y_atual = 0;
@@ -48,19 +55,19 @@ TelaCadastro::~TelaCadastro() {
 
 int TelaCadastro::VerificaClique(int _x, int _y) {
     if (logar->FoiClicado(_x, _y)) {
-        return 3; //Se mantém pois ainda não temos tela de login
+        return TELA_JOGO;
     }
 
     if (cadastrar->FoiClicado(_x, _y)) {
-        return 3; //Se mantém pois ainda não temos para cadastrar
+        return TELA_CADASTRO; 
     }
 
     if (voltar->FoiClicado(_x, _y)) {
-        return 0; //Volta para a página inicial 
+        return TELA_INICIO; 
     }
 
 
-    return 2;
+    return TELA_CADASTRO;
 }
 
 void TelaCadastro::Render(float display_height, float display_width) {

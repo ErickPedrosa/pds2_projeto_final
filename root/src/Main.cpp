@@ -15,6 +15,12 @@
 
 #define SUCESSO 0
 
+#define TELA_INICIO 0
+#define TELA_PLACAR 1
+#define TELA_CADASTRO 2
+#define TELA_JOGO 3
+#define TELA_SAIR -1
+
 
 
 int main(int argc, char** argv) {
@@ -57,11 +63,7 @@ int main(int argc, char** argv) {
 	//Variáveis de controle do jogo
 	bool jogando = true;
 	bool pulo = false;
-	int telaAtual = 0;	//0 - Tela de Inicio
-						//1 - Tela de Placar
-						//2 - Tela de cadastro
-						//3 - Tela de Jogo
-
+	int telaAtual = 0;	
 
 
 	//Inicio do timer do jogo
@@ -93,19 +95,19 @@ int main(int argc, char** argv) {
 
 			switch (telaAtual)
 			{
-			case 0:
+			case TELA_INICIO:
 				telaDestino = telaInicio->VerificaClique(_x, _y);
 				break;
 
-			case 1:
+			case TELA_PLACAR:
 				telaDestino = telaPlacar->VerificaClique(_x, _y);
 				break;
 
-			case 2:
+			case TELA_CADASTRO:
 				telaDestino = telaCadastro->VerificaClique(_x, _y);
 				break;
 
-			case -1:
+			case TELA_SAIR:
 				//Thrown a error
 				jogando = false;
 				break;

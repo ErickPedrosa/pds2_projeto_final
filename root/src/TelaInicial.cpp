@@ -1,6 +1,13 @@
 #include "../include/TelaInicial.hpp"
 #include <iostream>
 
+#define TELA_INICIO 0
+#define TELA_PLACAR 1
+#define TELA_CADASTRO 2
+#define TELA_JOGO 3
+#define TELA_SAIR -1
+
+
 TelaInicial::TelaInicial(float display_height, float display_width){
     x_atual = 0;
     y_atual = 0;
@@ -47,19 +54,19 @@ TelaInicial::~TelaInicial() {
 
 int TelaInicial::VerificaClique(int _x, int _y) {
     if (jogar->FoiClicado(_x, _y)) {
-        return 2; //Vai para a tela de cadastro;
+        return TELA_CADASTRO; //Vai para a tela de cadastro;
     }
 
     if (placar->FoiClicado(_x, _y)) {
-        return 1; //Vai para a tela de placar;
+        return TELA_PLACAR; //Vai para a tela de placar;
     }
 
     if (sair->FoiClicado(_x, _y)) {
-        return -1; //Sai do Programa;
+        return TELA_SAIR; //Sai do Programa;
     }
 
 
-    return 0;
+    return TELA_INICIO;
 }
 
 

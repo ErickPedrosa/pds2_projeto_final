@@ -1,6 +1,13 @@
 #include "../include/TelaPlacar.hpp"
 #include <iostream>
 
+#define TELA_INICIO 0
+#define TELA_PLACAR 1
+#define TELA_CADASTRO 2
+#define TELA_JOGO 3
+#define TELA_SAIR -1
+
+
 TelaPlacar::TelaPlacar(float display_height, float display_width){
     x_atual = 0;
     y_atual = 0;
@@ -37,10 +44,10 @@ TelaPlacar::~TelaPlacar() {
 int TelaPlacar::VerificaClique(int _x, int _y) {
 
     if (voltar->FoiClicado(_x, _y)) {
-        return 0;
+        return TELA_INICIO;
     }
     else {
-        return 1;
+        return TELA_PLACAR;
     }
 
 }
