@@ -78,7 +78,6 @@ int main(int argc, char** argv) {
 		al_wait_for_event(filaEventos, &evento);
 
 		
-
 		//Acaba com o programa 
 		if (evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
 
@@ -144,48 +143,56 @@ int main(int argc, char** argv) {
 			pulo = false;
 		}
 
-		//Limpa a tela
-		al_clear_to_color(al_map_rgb(0, 0, 0));
-
 		
+		
+		if (evento.type == ALLEGRO_EVENT_TIMER) {
 
-		//Condicionais para verificar qual tela deve ser mostrada
-		switch (telaAtual)
-		{
-		case 0:
-			telaInicio->Render(al_get_display_height(disp), al_get_display_width(disp));
-			break;
+			//Limpa a tela
+			al_clear_to_color(al_map_rgb(0, 0, 0));
 
-		case 1:
-			telaPlacar->Render(al_get_display_height(disp), al_get_display_width(disp));
-			break;
 
-		case 2:
-			telaCadastro->Render(al_get_display_height(disp), al_get_display_width(disp));
+			//Condicionais para verificar qual tela deve ser mostrada
+			switch (telaAtual)
+			{
+			case 0:
+				telaInicio->Render(al_get_display_height(disp), al_get_display_width(disp));
+				break;
 
-			break;
+			case 1:
+				telaPlacar->Render(al_get_display_height(disp), al_get_display_width(disp));
+				break;
 
-		case 3:
-			telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
-			flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 0);
+			case 2:
+				telaCadastro->Render(al_get_display_height(disp), al_get_display_width(disp));
 
-			if (colide->colidiu(flappy, telaJogo)) {
-				flappy->Restart();
- 				telaAtual = 0;
-				//mandar para a tela de game over
+				break;
+
+			case 3:
+				telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
+				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 0);
+
+				if (colide->colidiu(flappy, telaJogo)) {
+					flappy->Restart();
+					telaAtual = 0;
+					//mandar para a tela de game over
+				}
+
+
+				if (pulo) {
+					flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
+
+				}
+
+				break;
+			default:
+
+				break;
 			}
 
 
-			if (pulo) {
-				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
-				
-			}
 
-			break;
-		default:
-
-			break;
 		}
+		
 
 		
 		//Renderiza a tela no display
