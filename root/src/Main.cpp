@@ -9,7 +9,7 @@
 #include "../include/TelaPlacar.hpp"
 #include "../include/TelaDeJogo.hpp"
 #include "../include/Passaro.hpp"
-#include "../../Colisao.hpp"
+#include "../include/Colisao.hpp"
 
 
 
@@ -167,13 +167,16 @@ int main(int argc, char** argv) {
 			telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
 			flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 0);
 
+			if (colide->colidiu(flappy, telaJogo)) {
+				flappy->Restart();
+ 				telaAtual = 0;
+				//mandar para a tela de game over
+			}
+
 
 			if (pulo) {
 				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
-				if (colide->colidiu(flappy, telaJogo)) {
-					return 0;
-					//mandar para a tela de game over
-				}
+				
 			}
 
 			break;

@@ -3,25 +3,19 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
-#include "../include/IRenderizavel.hpp"
+#include "../include/ObjetoJogo.hpp"
 
 
-class TelaDeJogo : IRenderizavel{
-private:
-	int x_atual;
-	int y_atual;
-	//InfoJogadores
-
+class TelaDeJogo : public ObjetoJogo{
+protected:
+	float escala_w;
+	float escala_h;
 public:
 	TelaDeJogo();
 	~TelaDeJogo();
 	void Render(float display_height, float display_width) override;
-
-	float getX() const;
-	float getY() const;
-	float getWidth() const;
-	float getHeight() const;
-
+	float getWidth() const override;
+	float getHeight() const override;
 
 };
 

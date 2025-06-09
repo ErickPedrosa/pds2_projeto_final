@@ -3,21 +3,16 @@
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
-#include "../include/IRenderizavel.hpp"
+#include "../include/ObjetoJogo.hpp"
 #include "../include/Botao.hpp"
 
 
-class TelaInicial : IRenderizavel {
+class TelaInicial : public ObjetoJogo {
 	private:
-		int x_atual;
-		int y_atual;
-
 		Botao *jogar;
 		Botao *placar;
 		Botao *sair;
 
-
-		//InfoJogadores
 
 	public:
 		TelaInicial(float display_height, float display_width);

@@ -2,7 +2,10 @@
 #include <iostream>
 
 
-Passaro::Passaro() : x_atual(0), y_atual(0) {
+Passaro::Passaro() : escala(1.5) {
+    x_atual = 0;
+    y_atual = 0;
+    
     if (!al_init_image_addon())
     {
         std::cout << "couldn't initialize image addon" << std::endl;
@@ -29,11 +32,11 @@ void Passaro::Render(float display_height, float display_width) {
 
 void Passaro::Render(float display_height, float display_width, int op) {
 
-    float img_w = al_get_bitmap_width(sprite);
-    float img_h = al_get_bitmap_height(sprite);
+    int img_w = this->getWidth();
+    int img_h = this->getHeight();
 
-    float escala_w = 1.5;
-    float escala_h = 1.5;
+    float escala_w = this->escala;
+    float escala_h = this->escala;
 
     switch (op)
     {
@@ -68,7 +71,10 @@ void Passaro::Render(float display_height, float display_width, int op) {
 
 }
 
-float Passaro::getX() const { return x_atual; }
-float Passaro::getY() const { return y_atual; }
-float Passaro::getWidth() const { return al_get_bitmap_width(sprite) * 1.5; }
-float Passaro::getHeight() const { return al_get_bitmap_height(sprite) * 1.5; } 
+void Passaro::Restart() {
+    x_atual = 0;
+    y_atual = 0;
+}
+
+float Passaro::getWidth() const { return al_get_bitmap_width(sprite) * this->escala; }
+float Passaro::getHeight() const { return al_get_bitmap_height(sprite) * this->escala; } 

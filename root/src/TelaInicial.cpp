@@ -1,7 +1,10 @@
 #include "../include/TelaInicial.hpp"
 #include <iostream>
 
-TelaInicial::TelaInicial(float display_height, float display_width) : x_atual(0), y_atual(0) {
+TelaInicial::TelaInicial(float display_height, float display_width){
+    x_atual = 0;
+    y_atual = 0;
+
     if (!al_init_image_addon())
     {
         std::cout <<"couldn't initialize image addon" << std::endl;
@@ -52,7 +55,7 @@ int TelaInicial::VerificaClique(int _x, int _y) {
     }
 
     if (sair->FoiClicado(_x, _y)) {
-        return -1; //Vai para a tela de cadastro;
+        return -1; //Sai do Programa;
     }
 
 
@@ -62,11 +65,8 @@ int TelaInicial::VerificaClique(int _x, int _y) {
 
 void TelaInicial::Render(float display_height, float display_width) {
    
-
-
-    int img_w = al_get_bitmap_width(sprite);
-    int img_h = al_get_bitmap_height(sprite);
-
+    int img_w = this->getWidth();
+    int img_h = this->getHeight();
 
     int num_tiles = 5;
 

@@ -5,6 +5,9 @@
 #include <iostream>
 
 TelaDeJogo::TelaDeJogo() {
+    x_atual = 0;
+    y_atual = 0;
+
     if (!al_init_image_addon())
     {
         std::cout << "couldn't initialize image addon" << std::endl;
@@ -12,6 +15,10 @@ TelaDeJogo::TelaDeJogo() {
     }
 
     sprite = al_load_bitmap("assets/background-day.png");
+
+
+    escala_w = 1.0;
+    escala_h = 1.0;
 }
 
 
@@ -26,15 +33,14 @@ void TelaDeJogo::Render(float display_height, float display_width) {
  
 
 
-    int img_w = al_get_bitmap_width(sprite);
-    int img_h = al_get_bitmap_height(sprite);
+    int img_w = al_get_bitmap_width(sprite);;
+    int img_h = al_get_bitmap_height(sprite);;
 
 
     int num_tiles = 5;
 
-    float escala_w = display_width / ((num_tiles - 1) * img_w);
-    float escala_h = display_height / img_h;
-
+    escala_w = display_width / ((num_tiles - 1) * img_w);
+    escala_h = display_height / img_h;
 
     x_atual -= 1;
     if (x_atual <= -img_w * escala_w) {
@@ -57,7 +63,5 @@ void TelaDeJogo::Render(float display_height, float display_width) {
 
 }
 
-float TelaDeJogo::getX() const { return 0; }
-float TelaDeJogo::getY() const { return 0; }
-float TelaDeJogo::getWidth() const { return al_get_bitmap_width(sprite); }
-float TelaDeJogo::getHeight() const { return al_get_bitmap_height(sprite); }
+float TelaDeJogo::getWidth() const { return al_get_bitmap_width(sprite) * this->escala_w; }
+float TelaDeJogo::getHeight() const { return al_get_bitmap_height(sprite) * this->escala_h; }
