@@ -1,9 +1,9 @@
 #ifndef OBSTACULO_HPP
 #define OBSTACULO_HPP
 
+#include "ObjetoJogo.hpp"
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
-#include "ObjetoJogo.hpp"
 
 
 class Obstaculo : public ObjetoJogo {

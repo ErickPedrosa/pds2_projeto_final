@@ -10,6 +10,7 @@
 #include "../include/TelaDeJogo.hpp"
 #include "../include/Passaro.hpp"
 #include "../include/Colisao.hpp"
+#include "../include/Obstaculo.hpp"
 
 
 

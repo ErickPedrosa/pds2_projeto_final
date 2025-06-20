@@ -42,7 +42,7 @@
     <ClCompile Include="root\src\Colisao.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
-    <ClCompile Include="Obstaculo.cpp">
+    <ClCompile Include="root\src\Obstaculo.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,7 +74,7 @@
     <ClInclude Include="root\include\ObjetoJogo.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Obstaculo.hpp">
+    <ClInclude Include="root\include\Obstaculo.hpp">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
   </ItemGroup>
