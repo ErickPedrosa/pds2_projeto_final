@@ -4,15 +4,13 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 
-
 class IRenderizavel {
 protected:
-	ALLEGRO_BITMAP* sprite;
+    ALLEGRO_BITMAP* sprite;
 
 public:
-
-	virtual void Render(float display_height, float display_width) = 0;
-
+    virtual void Render(float display_height, float display_width) = 0;
+    virtual ~IRenderizavel() {}
 };
 
 #endif

@@ -1,4 +1,4 @@
-#include <allegro5/allegro5.h>
+ï»¿#include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/mouse.h>
@@ -24,7 +24,7 @@
 
 
 int main(int argc, char** argv) {
-	
+
 
 	//Inicio do Allegro
 	al_init();
@@ -33,9 +33,9 @@ int main(int argc, char** argv) {
 	al_init_primitives_addon();
 
 
-	
 
-	//Inicialização dos módulos do Allegro
+
+	//Inicializaï¿½ï¿½o dos mï¿½dulos do Allegro
 	ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60.0);
 	ALLEGRO_EVENT_QUEUE* filaEventos = al_create_event_queue();
 	ALLEGRO_DISPLAY* disp = al_create_display(1280, 800);
@@ -55,15 +55,15 @@ int main(int argc, char** argv) {
 	TelaInicial* telaInicio = new TelaInicial(al_get_display_height(disp), al_get_display_width(disp));
 	TelaCadastro* telaCadastro = new TelaCadastro(al_get_display_height(disp), al_get_display_width(disp));
 	TelaPlacar* telaPlacar = new TelaPlacar(al_get_display_height(disp), al_get_display_width(disp));
-	TelaDeJogo *telaJogo = new TelaDeJogo();
+	TelaDeJogo* telaJogo = new TelaDeJogo();
 	Passaro* flappy = new Passaro();
 	Colisao* colide = new Colisao();
 
 
-	//Variáveis de controle do jogo
+	//Variï¿½veis de controle do jogo
 	bool jogando = true;
 	bool pulo = false;
-	int telaAtual = 0;	
+	int telaAtual = 0;
 
 
 	//Inicio do timer do jogo
@@ -77,20 +77,20 @@ int main(int argc, char** argv) {
 		//Espera por um evento na fila
 		al_wait_for_event(filaEventos, &evento);
 
-		
+
 		//Acaba com o programa 
-		if (evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE){
+		if (evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
 
 			break;
 		}
 
-		
+
 		//Verifica envento de mouse
 		if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
 			int _x = evento.mouse.x;
 			int _y = evento.mouse.y;
 
-			int telaDestino = telaAtual; //Por default se mantém;
+			int telaDestino = telaAtual; //Por default se mantï¿½m;
 
 			switch (telaAtual)
 			{
@@ -117,11 +117,11 @@ int main(int argc, char** argv) {
 
 			telaAtual = telaDestino;
 		}
-		
-		
+
+
 		//Verifica envento de teclas pressionadas
 		if (evento.type == ALLEGRO_EVENT_KEY_DOWN) {
-			
+
 			switch (evento.keyboard.keycode) {
 			case ALLEGRO_KEY_C:
 				telaAtual = 0;
@@ -143,13 +143,12 @@ int main(int argc, char** argv) {
 			pulo = false;
 		}
 
-		
-		
+
+
 		if (evento.type == ALLEGRO_EVENT_TIMER) {
 
 			//Limpa a tela
 			al_clear_to_color(al_map_rgb(0, 0, 0));
-
 
 			//Condicionais para verificar qual tela deve ser mostrada
 			switch (telaAtual)
@@ -164,10 +163,10 @@ int main(int argc, char** argv) {
 
 			case 2:
 				telaCadastro->Render(al_get_display_height(disp), al_get_display_width(disp));
-
 				break;
 
 			case 3:
+				telaJogo->atualizar(); 
 				telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
 				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 0);
 
@@ -192,15 +191,15 @@ int main(int argc, char** argv) {
 
 
 		}
-		
 
-		
+
+
 		//Renderiza a tela no display
 		al_flip_display();
 
 	}
 
-	//Desalocação dos objetos
+	//Desalocaï¿½ï¿½o dos objetos
 	delete(telaInicio);
 	delete(telaCadastro);
 	delete(telaPlacar);
@@ -209,7 +208,7 @@ int main(int argc, char** argv) {
 	delete(colide);
 
 
-	//Destruição dos módulos do Allegro
+	//Destruiï¿½ï¿½o dos mï¿½dulos do Allegro
 	al_destroy_font(font);
 	al_destroy_display(disp);
 	al_destroy_timer(timer);
@@ -218,4 +217,3 @@ int main(int argc, char** argv) {
 
 	return SUCESSO;
 }
-

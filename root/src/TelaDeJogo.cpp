@@ -1,51 +1,42 @@
-
-
-
 #include "../include/TelaDeJogo.hpp"
 #include <iostream>
+#include <cstdlib>
 
 TelaDeJogo::TelaDeJogo() {
     x_atual = 0;
     y_atual = 0;
 
-    if (!al_init_image_addon())
-    {
-        std::cout << "couldn't initialize image addon" << std::endl;
-        //Trown error
+    if (!al_init_image_addon()) {
+        std::cout << "Couldn't initialize image addon" << std::endl;
     }
 
     sprite = al_load_bitmap("assets/background-day.png");
 
-
     escala_w = 1.0;
     escala_h = 1.0;
-}
 
+    velocidade = 2.0f;
+
+    for (int i = 0; i < 3; i++) {
+        int x_pos = 400 + i * 300;
+        obstaculos.push_back(new Obstaculo(x_pos, 800, 200));
+    }
+}
 
 TelaDeJogo::~TelaDeJogo() {
     al_destroy_bitmap(sprite);
-
-
-
+    for (auto o : obstaculos) delete o;
+    obstaculos.clear();
 }
 
 void TelaDeJogo::Render(float display_height, float display_width) {
- 
-
-
-    int img_w = al_get_bitmap_width(sprite);;
-    int img_h = al_get_bitmap_height(sprite);;
-
+    int img_w = al_get_bitmap_width(sprite);
+    int img_h = al_get_bitmap_height(sprite);
 
     int num_tiles = 5;
 
     escala_w = display_width / ((num_tiles - 1) * img_w);
     escala_h = display_height / img_h;
-
-    x_atual -= 1;
-    if (x_atual <= -img_w * escala_w) {
-        x_atual += img_w * escala_w;
-    }
 
     for (int i = 0; i < num_tiles; i++) {
         float dx = (i * img_w * escala_w) + x_atual;
@@ -61,7 +52,30 @@ void TelaDeJogo::Render(float display_height, float display_width) {
         );
     }
 
+    for (auto o : obstaculos) {
+        o->Render(display_height, display_width);
+    }
 }
 
-float TelaDeJogo::getWidth() const { return al_get_bitmap_width(sprite) * this->escala_w; }
-float TelaDeJogo::getHeight() const { return al_get_bitmap_height(sprite) * this->escala_h; }
+void TelaDeJogo::atualizar() {
+    x_atual -= velocidade;
+    if (x_atual <= -al_get_bitmap_width(sprite) * escala_w) {
+        x_atual += al_get_bitmap_width(sprite) * escala_w;
+    }
+
+    for (auto obs : obstaculos) {
+        obs->atualizar(velocidade);
+        if (obs->foraDaTela()) {
+            float novaX = getWidth() + rand() % 200;
+            obs->resetar(novaX);
+        }
+    }
+}
+
+float TelaDeJogo::getWidth() const {
+    return al_get_bitmap_width(sprite) * this->escala_w;
+}
+
+float TelaDeJogo::getHeight() const {
+    return al_get_bitmap_height(sprite) * this->escala_h;
+}
