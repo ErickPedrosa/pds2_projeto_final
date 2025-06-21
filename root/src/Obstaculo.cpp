@@ -1,9 +1,10 @@
-#include "Obstaculo.hpp"
+#include "../include/Obstaculo.hpp"
 #include <iostream>
 #include <cstdlib>
 
 Obstaculo::Obstaculo(int x_inicial, int altura_tela, float abertura) {
-    this->x_atual = x_inicial;
+    x_atual = x_inicial;
+    y_atual = 0;
     this->altura_tela = altura_tela;
     this->abertura = abertura;
 
@@ -16,7 +17,7 @@ Obstaculo::Obstaculo(int x_inicial, int altura_tela, float abertura) {
     y_gap = rand() % (altura_tela - (int)abertura - 200) + 100;
 }
 
-void Obstaculo::atualizar(float velocidade) {
+void Obstaculo::atualizar(int velocidade) {
     x_atual -= velocidade;
 }
 
@@ -24,7 +25,7 @@ bool Obstaculo::foraDaTela() const {
     return x_atual + largura < 0;
 }
 
-void Obstaculo::resetar(float novaX) {
+void Obstaculo::resetar(int novaX) {  // <-- MANTÉM int para bater com o .hpp
     x_atual = novaX;
     y_gap = rand() % (altura_tela - (int)abertura - 200) + 100;
 }

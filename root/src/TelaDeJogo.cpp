@@ -59,26 +59,35 @@ void TelaDeJogo::Render(float display_height, float display_width) {
         o->Render(display_height, display_width);
     }
 }
+float TelaDeJogo::getHeight() const {
+    return al_get_bitmap_height(sprite) * escala_h;
+}
 
 void TelaDeJogo::atualizar() {
     x_atual -= velocidade;
+
     if (x_atual <= -al_get_bitmap_width(sprite) * escala_w) {
         x_atual += al_get_bitmap_width(sprite) * escala_w;
     }
 
+    // Define uma distância mínima entre os canos
+    float distancia_entre_canos = 400.0f;
+
+    // Acha a maior posição X dos canos (o que está mais à direita)
+    float ultima_posicao_x = 0;
     for (auto obs : obstaculos) {
-        obs->atualizar(velocidade);
-        if (obs->foraDaTela()) {
-            float novaX = getWidth() + rand() % 200;
-            obs->resetar(novaX);
+        if (obs->getX() > ultima_posicao_x) {
+            ultima_posicao_x = obs->getX();
         }
     }
-}
 
-float TelaDeJogo::getWidth() const {
-    return al_get_bitmap_width(sprite) * this->escala_w;
-}
+    for (auto obs : obstaculos) {
+        obs->atualizar(velocidade);
 
-float TelaDeJogo::getHeight() const {
-    return al_get_bitmap_height(sprite) * this->escala_h;
+        if (obs->foraDaTela()) {
+            float novaX = ultima_posicao_x + distancia_entre_canos;
+            obs->resetar((int)novaX);
+            ultima_posicao_x = novaX; // atualiza para o próximo cano seguir esse
+        }
+    }
 }
