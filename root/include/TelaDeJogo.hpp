@@ -1,23 +1,35 @@
-#ifndef TELADEJOGO_H
-#define TELADEJOGO_H
+#ifndef TELADEJOGO_HPP
+#define TELADEJOGO_HPP
 
+#include <vector>
 #include <allegro5/allegro.h>
-#include <allegro5/allegro_image.h>
-#include "../include/ObjetoJogo.hpp"
-#include "../include/HUD.hpp"
+#include "Obstaculo.hpp"
 
-class TelaDeJogo : public ObjetoJogo{
-protected:
-	float escala_w;
-	float escala_h;
-	HUD* hud;
+class TelaDeJogo {
+private:
+    float x_atual;
+    float y_atual;
+
+    float escala_w;
+    float escala_h;
+
+    float velocidade;
+    ALLEGRO_BITMAP* sprite;
+    ALLEGRO_BITMAP* sprite_chao;
+
+    std::vector<Obstaculo*> obstaculos;
+
 public:
-	TelaDeJogo();
-	~TelaDeJogo();
-	void Render(float display_height, float display_width) override;
-	float getWidth() const override;
-	float getHeight() const override;
-	void AtualizarHUD(int novoScore, double novoTempo, const std::string& nome);
+    TelaDeJogo();
+    ~TelaDeJogo();
+
+	std::vector<Obstaculo*>& getObstaculos();
+
+    void atualizar();
+    void Render(float display_height, float display_width);
+
+    float getWidth() const;
+    float getHeight() const;
 };
 
 #endif

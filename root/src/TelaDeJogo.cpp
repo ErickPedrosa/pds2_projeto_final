@@ -1,53 +1,50 @@
-
-
-
 #include "../include/TelaDeJogo.hpp"
 #include <iostream>
+#include <cstdlib>
 
 TelaDeJogo::TelaDeJogo() {
     x_atual = 0;
     y_atual = 0;
 
-    if (!al_init_image_addon())
-    {
-        std::cout << "couldn't initialize image addon" << std::endl;
-        //Trown error
+    if (!al_init_image_addon()) {
+        std::cout << "Couldn't initialize image addon" << std::endl;
     }
 
     sprite = al_load_bitmap("assets/background-day.png");
-
+    sprite_chao = al_load_bitmap("assets/base.png");
 
     escala_w = 1.0;
     escala_h = 1.0;
 
-    hud = new HUD();
-}
+    velocidade = 2.0f;
 
+    for (int i = 0; i < 3; i++) {
+        int x_pos = 400 + i * 300;
+        obstaculos.push_back(new Obstaculo(x_pos, 800, 200));
+    }
+}
 
 TelaDeJogo::~TelaDeJogo() {
     al_destroy_bitmap(sprite);
-
-    delete hud;
-
+    for (auto o : obstaculos) delete o;
+    obstaculos.clear();
 }
 
+std::vector<Obstaculo*>& TelaDeJogo::getObstaculos() { return obstaculos; }
+
+
 void TelaDeJogo::Render(float display_height, float display_width) {
- 
+    int img_w = al_get_bitmap_width(sprite);
+    int img_h = al_get_bitmap_height(sprite);
+    int img_w_chao = al_get_bitmap_width(sprite_chao);
+    int img_h_chao = al_get_bitmap_height(sprite_chao);
 
-
-    int img_w = al_get_bitmap_width(sprite);;
-    int img_h = al_get_bitmap_height(sprite);;
 
 
     int num_tiles = 5;
 
     escala_w = display_width / ((num_tiles - 1) * img_w);
     escala_h = display_height / img_h;
-
-    x_atual -= 1;
-    if (x_atual <= -img_w * escala_w) {
-        x_atual += img_w * escala_w;
-    }
 
     for (int i = 0; i < num_tiles; i++) {
         float dx = (i * img_w * escala_w) + x_atual;
@@ -61,13 +58,49 @@ void TelaDeJogo::Render(float display_height, float display_width) {
             img_h * escala_h,
             0
         );
+        al_draw_scaled_bitmap(
+            sprite_chao,
+            0, 0, img_w_chao, img_h_chao,
+            dx, display_height - img_h_chao * escala_h,
+            img_w_chao * escala_w,
+            img_h_chao * escala_h,
+            0
+        );
     }
-    hud->Render(display_height, display_width);
+
+    for (auto o : obstaculos) {
+        o->Render(display_height, display_width);
+    }
+}
+float TelaDeJogo::getHeight() const {
+    return al_get_bitmap_height(sprite) * escala_h;
 }
 
-void TelaDeJogo::AtualizarHUD(int novoScore, double novoTempo, const std::string& nome) {
-    hud->Atualizar(novoScore, novoTempo, nome);
-}
+void TelaDeJogo::atualizar() {
+    x_atual -= velocidade;
 
-float TelaDeJogo::getWidth() const { return al_get_bitmap_width(sprite) * this->escala_w; }
-float TelaDeJogo::getHeight() const { return al_get_bitmap_height(sprite) * this->escala_h; }
+    if (x_atual <= -al_get_bitmap_width(sprite) * escala_w) {
+        x_atual += al_get_bitmap_width(sprite) * escala_w;
+    }
+
+    // Define uma distância mínima entre os canos
+    float distancia_entre_canos = 400.0f;
+
+    // Acha a maior posição X dos canos (o que está mais à direita)
+    float ultima_posicao_x = 0;
+    for (auto obs : obstaculos) {
+        if (obs->getX() > ultima_posicao_x) {
+            ultima_posicao_x = obs->getX();
+        }
+    }
+
+    for (auto obs : obstaculos) {
+        obs->atualizar(velocidade);
+
+        if (obs->foraDaTela()) {
+            float novaX = ultima_posicao_x + distancia_entre_canos;
+            obs->resetar((int)novaX);
+            ultima_posicao_x = novaX; // atualiza para o próximo cano seguir esse
+        }
+    }
+}
