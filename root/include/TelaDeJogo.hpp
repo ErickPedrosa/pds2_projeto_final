@@ -1,11 +1,14 @@
-#ifndef TELADEJOGO_HPP
+﻿#ifndef TELADEJOGO_HPP
 #define TELADEJOGO_HPP
 
 #include <vector>
 #include <allegro5/allegro.h>
+#include <allegro5/allegro_image.h>
+#include "../include/ObjetoJogo.hpp"
+#include "../include/HUD.hpp"
 #include "Obstaculo.hpp"
 
-class TelaDeJogo {
+class TelaDeJogo : public ObjetoJogo{
 private:
     float x_atual;
     float y_atual;
@@ -19,6 +22,8 @@ private:
 
     std::vector<Obstaculo*> obstaculos;
 
+    HUD* hud;
+
 public:
     TelaDeJogo();
     ~TelaDeJogo();
@@ -30,6 +35,10 @@ public:
 
     float getWidth() const;
     float getHeight() const;
+
+    void AtualizarHUD(int novoScore, double novoTempo, const std::string& nome);  
 };
+
+
 
 #endif

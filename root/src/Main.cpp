@@ -43,7 +43,9 @@ int main(int argc, char** argv) {
 	ALLEGRO_FONT* font = al_create_builtin_font();
 	ALLEGRO_EVENT evento;
 
-
+	//Variáveis para timer na Tela de Jogo
+	double tempoInicialPartida = 0.0; 
+	bool entrouNaTelaDeJogo = false; 
 
 	//Registrando eventos na pilha
 	al_register_event_source(filaEventos, al_get_keyboard_event_source());
@@ -166,17 +168,23 @@ int main(int argc, char** argv) {
 				telaCadastro->Render(al_get_display_height(disp), al_get_display_width(disp));
 				break;
 
-			case 3:
-				telaJogo->atualizar(); 
+			case 3: {
+				if (!entrouNaTelaDeJogo) {
+					tempoInicialPartida = al_get_time();
+					entrouNaTelaDeJogo = true;
+				}
+
+				telaJogo->atualizar();
 				telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
 				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 0);
 
-				if (colidir->colidirT(flappy, telaJogo)) {
+				if (colidir->colidirT(flappy, *telaJogo)) {
 					flappy->Restart();
 					telaAtual = 0;
+					entrouNaTelaDeJogo = false;
 					//mandar para a tela de game over
 				}
-				
+
 				for (auto cano : telaJogo->getObstaculos()) {
 					if (colidir->colidirO(flappy, cano)) {
 						flappy->Restart();
@@ -190,9 +198,16 @@ int main(int argc, char** argv) {
 
 				}
 
-				break;
-			default:
+				double tempoAtual = al_get_time() - tempoInicialPartida;
+				int scoreAtual = static_cast <int>(tempoAtual);
+				std::string nomeJogador = "Teste";
+				telaJogo->AtualizarHUD(scoreAtual, tempoAtual, nomeJogador);
 
+
+				break;
+			}
+			default:
+				entrouNaTelaDeJogo = false;
 				break;
 			}
 
