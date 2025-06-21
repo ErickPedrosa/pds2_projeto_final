@@ -16,10 +16,10 @@ private:
 public:
     Obstaculo(int x_inicial, int altura_tela, float abertura);
 
-    void atualizar(float velocidade);
+    void atualizar(int velocidade);
     void Render(float display_height, float display_width);
     bool foraDaTela() const;
-    void resetar(float novaX);
+    void resetar(int novaX);
 
     float getAbertura() const;
     int getLargura() const;
