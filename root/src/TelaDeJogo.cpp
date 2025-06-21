@@ -19,13 +19,15 @@ TelaDeJogo::TelaDeJogo() {
 
     escala_w = 1.0;
     escala_h = 1.0;
+
+    hud = new HUD();
 }
 
 
 TelaDeJogo::~TelaDeJogo() {
     al_destroy_bitmap(sprite);
 
-
+    delete hud;
 
 }
 
@@ -60,7 +62,11 @@ void TelaDeJogo::Render(float display_height, float display_width) {
             0
         );
     }
+    hud->Render(display_height, display_width);
+}
 
+void TelaDeJogo::AtualizarHUD(int novoScore, double novoTempo, const std::string& nome) {
+    hud->Atualizar(novoScore, novoTempo, nome);
 }
 
 float TelaDeJogo::getWidth() const { return al_get_bitmap_width(sprite) * this->escala_w; }
