@@ -117,7 +117,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\root\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -141,10 +140,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="root\src\Obstaculo.cpp" />
     <ClCompile Include="root\src\Colisao.cpp" />
     <ClCompile Include="root\include\IRenderizavel.hpp" />
     <ClCompile Include="root\Origem.cpp" />
+    <ClCompile Include="root\src\HUD.cpp" />
     <ClCompile Include="root\src\Main.cpp" />
     <ClCompile Include="root\src\Passaro.cpp" />
     <ClCompile Include="root\src\TelaCadastro.cpp" />
@@ -154,9 +153,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Hitbox.hpp" />
-    <ClInclude Include="root\include\Obstaculo.hpp" />
     <ClInclude Include="root\include\Colisao.hpp" />
     <ClInclude Include="root\include\Botao.hpp" />
+    <ClInclude Include="root\include\HUD.hpp" />
     <ClInclude Include="root\include\ObjetoJogo.hpp" />
     <ClInclude Include="root\include\Passaro.hpp" />
     <ClInclude Include="root\include\TelaCadastro.hpp" />

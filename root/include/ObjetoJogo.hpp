@@ -5,7 +5,7 @@
 #include <allegro5/allegro_image.h>
 #include "IRenderizavel.hpp"
 
-class ObjetoJogo : public  IRenderizavel {
+class ObjetoJogo : public  IRenderizavel{
 protected:
 	int x_atual;
 	int y_atual;
