@@ -11,10 +11,10 @@ bool Colisao::colidirT(const Passaro* flappy, const TelaDeJogo* telajogo) {
 	
 }
 
-bool Colisao::colidirO(const Passaro* flappy, const Obstaculo* cano) {
-	
-	// Verifica se o passaro colide com o obstaculo
-	return (flappy->getX() + flappy->getWidth() > cano->getAbertura() && flappy->getX() < cano->getAbertura() + cano->getLargura() &&
-			flappy->getY() + flappy->getHeight() > cano->getYGap() && flappy->getY() < cano->getYGap() + cano->getAlturaTela());
+bool Colisao::colidirO(const Passaro* flappy, const Obstaculo* cano) {  
+    // Verifica se o passaro colide com o obstaculo  
+    return ((flappy->getX() + flappy->getWidth() > cano->getX() &&  
+             flappy->getX() < cano->getX() + cano->getLargura()) &&  
+            (flappy->getY() < cano->getYGap() ||  
+             flappy->getY() + flappy->getHeight() > cano->getYGap() + cano->getAbertura()));  
 }
-
