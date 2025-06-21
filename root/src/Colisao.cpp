@@ -3,15 +3,18 @@
 
 
 
-// Funcao que verifica se o teto e chao colidem com passaro
-bool Colisao::colidiu(const Passaro* flappy, const TelaDeJogo* telajogo) {
+// Verifica se o passaro colide com a tela de jogo
+bool Colisao::colidirT(const Passaro* flappy, const TelaDeJogo* telajogo) {
 	
 		
 	return (flappy->getY() < (0 - flappy->getHeight()) || flappy->getY() + flappy->getHeight() > telajogo->getHeight());
 	
 }
 
-/* Funcao para passaro e obstaculo seria:
+bool Colisao::colidirO(const Passaro* flappy, const Obstaculo* cano) {
+	
+	// Verifica se o passaro colide com o obstaculo
+	return (flappy->getX() + flappy->getWidth() > cano->getAbertura() && flappy->getX() < cano->getAbertura() + cano->getLargura() &&
+			flappy->getY() + flappy->getHeight() > cano->getYGap() && flappy->getY() < cano->getYGap() + cano->getAlturaTela());
+}
 
-return (flappy->getX() + flappy->getWidth() > telajogo->getX() && flappy->getX() < telajogo->getX() + telajogo->getWidth() && flappy->getY()
-+ flappy->getHeight() > telajogo->getY() && flappy->getY() < telajogo->getY() + telajogo->getHeight()); */

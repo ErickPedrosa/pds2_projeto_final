@@ -53,4 +53,10 @@ void Obstaculo::Render(float display_height, float display_width) {
         al_get_bitmap_height(sprite),
         0
     );
+    
 }
+
+float Obstaculo::getAbertura() const { return abertura; }
+int Obstaculo::getLargura() const { return largura; }
+int Obstaculo::getYGap() const { return y_gap; }
+int Obstaculo::getAlturaTela() const { return altura_tela; }

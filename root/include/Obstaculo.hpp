@@ -20,6 +20,11 @@ public:
     void Render(float display_height, float display_width);
     bool foraDaTela() const;
     void resetar(float novaX);
+
+    float getAbertura() const;
+    int getLargura() const;
+    int getYGap() const;
+    int getAlturaTela() const;
 };
 
 #endif

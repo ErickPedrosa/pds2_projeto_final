@@ -5,11 +5,13 @@
 #include <allegro5/allegro.h>
 #include "../include/Passaro.hpp"
 #include "../include/TelaDeJogo.hpp"
+#include "../include/Obstaculo.hpp"
 
 class Colisao {
-	//gameobject no caso seriam os objetos do jogo que queremos verificar colisão, falta definir propriamente
+	
 public:
-	bool colidiu(const Passaro* flappy, const TelaDeJogo* telajogo);
+	bool colidirT(const Passaro* flappy, const TelaDeJogo* telajogo);
+	bool colidirO(const Passaro* flappy, const Obstaculo* cano);
 };
 
 

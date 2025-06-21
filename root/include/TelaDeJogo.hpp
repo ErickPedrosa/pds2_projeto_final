@@ -22,6 +22,8 @@ public:
     TelaDeJogo();
     ~TelaDeJogo();
 
+	std::vector<Obstaculo*>& getObstaculos();
+
     void atualizar();
     void Render(float display_height, float display_width);
 

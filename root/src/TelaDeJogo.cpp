@@ -29,6 +29,9 @@ TelaDeJogo::~TelaDeJogo() {
     obstaculos.clear();
 }
 
+std::vector<Obstaculo*>& TelaDeJogo::getObstaculos() { return obstaculos; }
+
+
 void TelaDeJogo::Render(float display_height, float display_width) {
     int img_w = al_get_bitmap_width(sprite);
     int img_h = al_get_bitmap_height(sprite);

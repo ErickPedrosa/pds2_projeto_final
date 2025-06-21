@@ -58,8 +58,8 @@ int main(int argc, char** argv) {
 	TelaPlacar* telaPlacar = new TelaPlacar(al_get_display_height(disp), al_get_display_width(disp));
 	TelaDeJogo* telaJogo = new TelaDeJogo();
 	Passaro* flappy = new Passaro();
-	Colisao* colide = new Colisao();
-
+	Colisao* colidir = new Colisao(); 
+    
 
 	//Vari�veis de controle do jogo
 	bool jogando = true;
@@ -171,12 +171,19 @@ int main(int argc, char** argv) {
 				telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
 				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 0);
 
-				if (colide->colidiu(flappy, telaJogo)) {
+				if (colidir->colidirT(flappy, telaJogo)) {
 					flappy->Restart();
 					telaAtual = 0;
 					//mandar para a tela de game over
 				}
-
+				
+				for (auto cano : telaJogo->getObstaculos()) {
+					if (colidir->colidirO(flappy, cano)) {
+						flappy->Restart();
+						telaAtual = 0;
+						//mandar para a tela de game over
+					}
+				}
 
 				if (pulo) {
 					flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
@@ -206,7 +213,8 @@ int main(int argc, char** argv) {
 	delete(telaPlacar);
 	delete(telaJogo);
 	delete(flappy);
-	delete(colide);
+	delete(colidir);
+	
 
 
 	//Destrui��o dos m�dulos do Allegro
