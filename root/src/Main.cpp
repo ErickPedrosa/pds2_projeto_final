@@ -178,6 +178,7 @@ int main(int argc, char** argv) {
 				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 0);
 
 				if (colidir->colidirT(flappy, telaJogo)) {
+					telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
 					flappy->Restart();
 					telaAtual = 0;
 					entrouNaTelaDeJogo = false;
@@ -186,6 +187,7 @@ int main(int argc, char** argv) {
 
 				for (auto cano : telaJogo->getObstaculos()) {
 					if (colidir->colidirO(flappy, cano)) {
+ 						telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
 						flappy->Restart();
 						telaAtual = 0;
 						entrouNaTelaDeJogo = false;

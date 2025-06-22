@@ -31,6 +31,7 @@ public:
 	std::vector<Obstaculo*>& getObstaculos();
 
     void atualizar();
+    void Render(float display_height, float display_width, int op);
     void Render(float display_height, float display_width);
 
     float getWidth() const;

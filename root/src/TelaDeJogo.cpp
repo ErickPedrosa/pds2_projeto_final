@@ -36,7 +36,31 @@ TelaDeJogo::~TelaDeJogo() {
 std::vector<Obstaculo*>& TelaDeJogo::getObstaculos() { return obstaculos; }
 
 
+void TelaDeJogo::Render(float display_height, float display_width, int op) {
+
+    if (op == 1)
+    {
+        for (auto ob : obstaculos) {
+            delete ob;
+            
+        }
+        obstaculos.clear();
+
+        for (int i = 0; i < 3; i++) {
+            int x_pos = 400 + i * 300;
+            obstaculos.push_back(new Obstaculo(x_pos, 800, 200));
+        }
+    }
+    
+    this->Render(display_height, display_width);
+
+
+    }
+
+
 void TelaDeJogo::Render(float display_height, float display_width) {
+
+
     int img_w = al_get_bitmap_width(sprite);
     int img_h = al_get_bitmap_height(sprite);
     int img_w_chao = al_get_bitmap_width(sprite_chao);
@@ -76,7 +100,16 @@ void TelaDeJogo::Render(float display_height, float display_width) {
     }
 
     hud->Render(display_height, display_width);
+
+
+
+
+
+    
 }
+
+
+
 float TelaDeJogo::getHeight() const {
    return al_get_bitmap_height(sprite) *this->escala_h;
 }
