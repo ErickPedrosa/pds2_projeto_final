@@ -22,12 +22,15 @@ TelaDeJogo::TelaDeJogo() {
         int x_pos = 400 + i * 300;
         obstaculos.push_back(new Obstaculo(x_pos, 800, 200));
     }
+
+    hud = new HUD();
 }
 
 TelaDeJogo::~TelaDeJogo() {
     al_destroy_bitmap(sprite);
     for (auto o : obstaculos) delete o;
     obstaculos.clear();
+    delete hud;
 }
 
 std::vector<Obstaculo*>& TelaDeJogo::getObstaculos() { return obstaculos; }
@@ -71,10 +74,15 @@ void TelaDeJogo::Render(float display_height, float display_width) {
     for (auto o : obstaculos) {
         o->Render(display_height, display_width);
     }
+
+    hud->Render(display_height, display_width);
 }
 float TelaDeJogo::getHeight() const {
-    return al_get_bitmap_height(sprite) * escala_h;
+   return al_get_bitmap_height(sprite) *this->escala_h;
 }
+
+
+
 
 void TelaDeJogo::atualizar() {
     x_atual -= velocidade;
@@ -104,3 +112,14 @@ void TelaDeJogo::atualizar() {
         }
     }
 }
+
+void TelaDeJogo::AtualizarHUD(int novoScore, double novoTempo, const std::string& nome) {
+    hud->Atualizar(novoScore, novoTempo, nome);
+}
+
+
+float TelaDeJogo::getWidth() const {
+    return al_get_bitmap_width(sprite) * this->escala_w;
+}
+
+
