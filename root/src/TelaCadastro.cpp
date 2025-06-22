@@ -1,5 +1,8 @@
 #include "../include/TelaCadastro.hpp"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+
 
 #define TELA_INICIO 0
 #define TELA_PLACAR 1
@@ -23,19 +26,31 @@ TelaCadastro::TelaCadastro(float display_height, float display_width){
     int botao_height = 100;
     int botao_width = 300;
 
-    logar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) - (botao_height * 1.5),
-        botao_width, botao_height, al_map_rgb(255, 255, 255),
-        "Logar", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+    fonte = al_create_builtin_font();
+
+    std::srand(std::time(nullptr)); 
+    int numero = 1000 + std::rand() % 9000;
+    std::string placeholder = "Jogador" + std::to_string(numero);
+
+
+
+    input = new CaixaDeTexto(
+        (display_width / 2) - (botao_width / 2), (display_height / 2) - (botao_height * 1.5),
+        botao_width, botao_height / 2,
+        al_map_rgb(255, 255, 255),           
+        al_map_rgb(0, 0, 0),                 
+        fonte,
+        placeholder
     );
 
-    cadastrar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2),
+    logar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2),
         botao_width, botao_height, al_map_rgb(255, 255, 255),
-        "Cadastrar", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+        "Logar", fonte, al_map_rgb(0, 0, 0)
     );
 
     voltar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) + (botao_height * 1.5),
         botao_width, botao_height, al_map_rgb(255, 255, 255),
-        "Voltar", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+        "Voltar", fonte, al_map_rgb(0, 0, 0)
     );
 
 }
@@ -46,10 +61,16 @@ TelaCadastro::TelaCadastro(float display_height, float display_width){
 TelaCadastro::~TelaCadastro() {
     al_destroy_bitmap(sprite);
 
-    delete(logar);
-    delete(cadastrar);
-    delete(voltar);
 
+    delete(input);
+    delete(logar);
+    delete(voltar);
+    
+
+    
+    al_destroy_font(fonte);
+    
+    
 
 }
 
@@ -58,17 +79,29 @@ int TelaCadastro::VerificaClique(int _x, int _y) {
         return TELA_JOGO;
     }
 
-    if (cadastrar->FoiClicado(_x, _y)) {
-        return TELA_CADASTRO; 
-    }
 
     if (voltar->FoiClicado(_x, _y)) {
         return TELA_INICIO; 
     }
 
+    input->Ativar(input->FoiClicado(_x, _y));
 
     return TELA_CADASTRO;
 }
+
+void TelaCadastro::VerificaDigitacao(ALLEGRO_EVENT evento) {
+    if (input->EstaAtivado())
+    {
+        if (evento.keyboard.unichar >= 32 && evento.keyboard.unichar <= 126) {
+            input->texto += static_cast<char>(evento.keyboard.unichar);
+        }
+        else if (evento.keyboard.keycode == ALLEGRO_KEY_BACKSPACE && !input->texto.empty()) {
+            input->texto.pop_back();
+        }
+    }
+    
+}
+
 
 void TelaCadastro::Render(float display_height, float display_width) {
 
@@ -104,8 +137,8 @@ void TelaCadastro::Render(float display_height, float display_width) {
     }
 
     logar->GerarBotao();
-    cadastrar->GerarBotao();
     voltar->GerarBotao();
+    input->Desenhar();
 
 
 }

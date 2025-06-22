@@ -121,16 +121,14 @@ int main(int argc, char** argv) {
 		}
 
 
+		if (evento.type == ALLEGRO_EVENT_KEY_CHAR) {
+			telaCadastro->VerificaDigitacao(evento);
+		}
+
 		//Verifica envento de teclas pressionadas
 		if (evento.type == ALLEGRO_EVENT_KEY_DOWN) {
 
 			switch (evento.keyboard.keycode) {
-			case ALLEGRO_KEY_C:
-				telaAtual = 0;
-				break;
-			case ALLEGRO_KEY_X:
-				telaAtual = 3;
-				break;
 			case ALLEGRO_KEY_UP:
 				pulo = true;
 				break;

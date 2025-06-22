@@ -21,7 +21,6 @@ struct Botao
 		descricao(_descricao), fonte(_fonte), corDoTexto(_corDoTexto) {
 	}
 
-
 	void GerarBotao() {
 
 		al_draw_filled_rectangle(x, y, x + width, y + height, cor);

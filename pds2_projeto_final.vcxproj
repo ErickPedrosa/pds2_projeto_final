@@ -140,6 +140,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="root\include\CaixaDeTexto.hpp" />
     <ClCompile Include="root\src\Colisao.cpp" />
     <ClCompile Include="root\include\IRenderizavel.hpp" />
     <ClCompile Include="root\Origem.cpp" />

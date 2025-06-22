@@ -15,6 +15,7 @@ public:
 	virtual float getY() const { return y_atual; };
 	virtual float getWidth() const { return al_get_bitmap_width(sprite); };
 	virtual float getHeight() const { return al_get_bitmap_height(sprite); };
+	virtual ~ObjetoJogo() = default;
 
 };
 

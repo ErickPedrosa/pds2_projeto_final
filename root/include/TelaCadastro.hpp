@@ -5,13 +5,15 @@
 #include <allegro5/allegro_image.h>
 #include "../include/ObjetoJogo.hpp"
 #include "../include/Botao.hpp"
+#include "../include/CaixaDeTexto.hpp"
 
 
 class TelaCadastro : public ObjetoJogo {
 private:
-	Botao* cadastrar;
+	CaixaDeTexto* input;
 	Botao* logar;
 	Botao* voltar;
+	ALLEGRO_FONT* fonte;
 
 
 public:
@@ -19,6 +21,7 @@ public:
 	~TelaCadastro();
 	void Render(float display_height, float display_width) override;
 	int VerificaClique(int _x, int _y);
+	void VerificaDigitacao(ALLEGRO_EVENT evento);
 
 };
 
