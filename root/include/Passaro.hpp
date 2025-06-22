@@ -18,6 +18,8 @@ public:
 
 	float getWidth() const override;
 	float getHeight() const override;
+	float getY() const override;
+	float getX() const override;
 
 };
 
