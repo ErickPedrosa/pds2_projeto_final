@@ -22,6 +22,7 @@ public:
 	void Render(float display_height, float display_width) override;
 	int VerificaClique(int _x, int _y);
 	void VerificaDigitacao(ALLEGRO_EVENT evento);
+	std::string GetInput();
 
 };
 

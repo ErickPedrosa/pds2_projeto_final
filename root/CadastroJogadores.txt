@@ -1,0 +1,4 @@
+Jogador3829,2,10
+Erick,5,10
+Erick  ,1,10
+Erick   ,1,10

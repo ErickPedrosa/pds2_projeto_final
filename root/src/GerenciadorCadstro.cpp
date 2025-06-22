@@ -54,7 +54,7 @@ void GerenciadorCadastro::AtualizarJogador(int pontuacao) {
         linhas.push_back(novaLinha);
     }
 
-    std::ofstream* saida = AbrirArquivoParaEscrita();
+     std::ofstream* saida = AbrirArquivoParaEscrita();
     if (!saida->is_open()) {
         delete saida;
         return;
@@ -82,7 +82,7 @@ std::ifstream* GerenciadorCadastro::AbrirArquivoParaLeitura() {
 }
 
 std::ofstream* GerenciadorCadastro::AbrirArquivoParaEscrita() {
-    std::ofstream* arquivo = new std::ofstream("CadastroJogadores.txt", std::ios::out | std::ios::trunc);
+    std::ofstream* arquivo = new std::ofstream("CadastroJogadores.txt", std::ios::out);
     if (!arquivo->is_open()) {
         delete arquivo;
         return nullptr;
@@ -132,4 +132,9 @@ bool GerenciadorCadastro::joagdorJaExiste(std::string nome) {
 
     FecharArquivo(arq);
     return false;
+}
+
+
+GerenciadorCadastro::GerenciadorCadastro() : num_jogos_jogador_atual(0), nome_jogador_atual(""), pontuacao_maxima_jogador_atual(-1)
+{
 }

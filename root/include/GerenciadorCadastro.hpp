@@ -7,7 +7,6 @@ class GerenciadorCadastro
 {
 public:
 	GerenciadorCadastro();
-	~GerenciadorCadastro();
 	void Logar(std::string nome);
 	void AtualizarJogador(int pontuacao);
 
@@ -23,13 +22,7 @@ private:
 	bool joagdorJaExiste(std::string nome);
 };
 
-GerenciadorCadastro::GerenciadorCadastro() : num_jogos_jogador_atual(0) , nome_jogador_atual("") , pontuacao_maxima_jogador_atual(-1)
-{
-}
 
-GerenciadorCadastro::~GerenciadorCadastro()
-{
-}
 
 
 
