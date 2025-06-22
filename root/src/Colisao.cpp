@@ -4,10 +4,10 @@
 
 
 // Verifica se o passaro colide com a tela de jogo
-bool Colisao::colidirT(const Passaro* flappy, TelaDeJogo& telajogo) {
+bool Colisao::colidirT(const Passaro* flappy, const TelaDeJogo* telajogo) {
 	
 		
-	return (flappy->getY() < (0 - flappy->getHeight()) || flappy->getY() + flappy->getHeight() > telajogo.getHeight());
+	return (flappy->getY() < (0 - flappy->getHeight()) || flappy->getY() + flappy->getHeight() > telajogo->getHeight());
 	
 }
 
