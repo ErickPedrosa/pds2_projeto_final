@@ -145,7 +145,9 @@
     <ClCompile Include="root\Origem.cpp" />
     <ClCompile Include="root\src\HUD.cpp" />
     <ClCompile Include="root\src\Main.cpp" />
-    <ClCompile Include="root\src\Obstaculo.cpp" />
+    <ClCompile Include="root\src\Obstaculo.cpp">
+      <DeploymentContent>true</DeploymentContent>
+    </ClCompile>
     <ClCompile Include="root\src\Passaro.cpp" />
     <ClCompile Include="root\src\TelaCadastro.cpp" />
     <ClCompile Include="root\src\TelaDeJogo.cpp" />
@@ -153,12 +155,13 @@
     <ClCompile Include="root\src\TelaPlacar.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Hitbox.hpp" />
     <ClInclude Include="root\include\Colisao.hpp" />
     <ClInclude Include="root\include\Botao.hpp" />
     <ClInclude Include="root\include\HUD.hpp" />
     <ClInclude Include="root\include\ObjetoJogo.hpp" />
-    <ClInclude Include="root\include\Obstaculo.hpp" />
+    <ClInclude Include="root\include\Obstaculo.hpp">
+      <DeploymentContent>true</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="root\include\Passaro.hpp" />
     <ClInclude Include="root\include\TelaCadastro.hpp" />
     <ClInclude Include="root\include\TelaDeJogo.hpp" />

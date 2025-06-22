@@ -4,17 +4,17 @@
 
 
 // Verifica se o passaro colide com a tela de jogo
-bool Colisao::colidirT(const Passaro* flappy, TelaDeJogo& telajogo) {
+bool Colisao::colidirT(const Passaro* flappy, const TelaDeJogo* telajogo) {
 	
 		
-	return (flappy->getY() < (0 - flappy->getHeight()) || flappy->getY() + flappy->getHeight() > telajogo.getHeight());
+	return (flappy->getY() < (0 - flappy->getHeight()) || flappy->getY() + flappy->getHeight() > telajogo->getHeight());
 	
 }
 
-bool Colisao::colidirO(const Passaro* flappy, const Obstaculo* cano) {
-	
-	// Verifica se o passaro colide com o obstaculo
-	return (flappy->getX() + flappy->getWidth() > cano->getAbertura() && flappy->getX() < cano->getAbertura() + cano->getLargura() &&
-			flappy->getY() + flappy->getHeight() > cano->getYGap() && flappy->getY() < cano->getYGap() + cano->getAlturaTela());
+bool Colisao::colidirO(const Passaro* flappy, const Obstaculo* cano) {  
+    // Verifica se o passaro colide com o obstaculo  
+    return ((flappy->getX() + flappy->getWidth() > cano->getX() &&  
+             flappy->getX() < cano->getX() + cano->getLargura()) &&  
+            (flappy->getY() < cano->getYGap() ||  
+             flappy->getY() + flappy->getHeight() > cano->getYGap() + cano->getAbertura()));  
 }
-

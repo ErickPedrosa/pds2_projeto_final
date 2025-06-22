@@ -18,9 +18,6 @@ Passaro::Passaro() : escala(1.5) {
 
 Passaro::~Passaro() {
     al_destroy_bitmap(sprite);
-
-
-
 }
 
 void Passaro::Render(float display_height, float display_width) {
@@ -68,13 +65,25 @@ void Passaro::Render(float display_height, float display_width, int op) {
         0
     );
     
+}
 
+float Passaro::getWidth() const { return al_get_bitmap_width(sprite) * this->escala; }
+float Passaro::getHeight() const { return al_get_bitmap_height(sprite) * this->escala; } 
+float Passaro::getX() const {
+    
+    int img_w = al_get_bitmap_width(sprite);
+    float dx = img_w + (al_get_display_width(al_get_current_display()) / 10);
+    return dx;
+}
+
+float Passaro::getY() const {
+   
+    int img_h = al_get_bitmap_height(sprite);
+    float dy = img_h + y_atual;
+    return dy;
 }
 
 void Passaro::Restart() {
     x_atual = 0;
     y_atual = 0;
 }
-
-float Passaro::getWidth() const { return al_get_bitmap_width(sprite) * this->escala; }
-float Passaro::getHeight() const { return al_get_bitmap_height(sprite) * this->escala; } 

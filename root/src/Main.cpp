@@ -1,6 +1,5 @@
 ﻿#include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
-#include <allegro5/allegro_font.h>
 #include <allegro5/mouse.h>
 #include <allegro5/allegro_primitives.h>
 
@@ -178,7 +177,7 @@ int main(int argc, char** argv) {
 				telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
 				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 0);
 
-				if (colidir->colidirT(flappy, *telaJogo)) {
+				if (colidir->colidirT(flappy, telaJogo)) {
 					flappy->Restart();
 					telaAtual = 0;
 					entrouNaTelaDeJogo = false;
@@ -189,6 +188,7 @@ int main(int argc, char** argv) {
 					if (colidir->colidirO(flappy, cano)) {
 						flappy->Restart();
 						telaAtual = 0;
+						entrouNaTelaDeJogo = false;
 						//mandar para a tela de game over
 					}
 				}

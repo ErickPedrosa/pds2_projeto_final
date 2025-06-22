@@ -10,7 +10,7 @@
 class Colisao {
 	
 public:
-	bool colidirT(const Passaro* flappy, TelaDeJogo& telajogo);
+	bool colidirT(const Passaro* flappy, const TelaDeJogo* telajogo);
 	bool colidirO(const Passaro* flappy, const Obstaculo* cano);
 };
 
