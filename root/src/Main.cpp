@@ -122,7 +122,7 @@ int main(int argc, char** argv) {
 				}
 
 				break;
-			case TELA_GAMEOVER: 
+			case TELA_GAMEOVER:
 				telaDestino = telaGameOver->VerificaClique(_x, _y);
 				break;
 
@@ -207,7 +207,7 @@ int main(int argc, char** argv) {
 
 				for (auto cano : telaJogo->getObstaculos()) {
 					if (colidir->colidirO(flappy, cano)) {
- 						telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
+						telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
 						flappy->Restart();
 						telaAtual = TELA_GAMEOVER;;
 						entrouNaTelaDeJogo = false;
@@ -239,14 +239,14 @@ int main(int argc, char** argv) {
 
 				break;
 			}
-			case TELA_GAMEOVER: 
+			case TELA_GAMEOVER:
 				telaGameOver->Render(al_get_display_height(disp), al_get_display_width(disp));
 				break;
 			default:
 				entrouNaTelaDeJogo = false;
 				break;
 			}
-
+		}
 
 		//Renderiza a tela no display
 		al_flip_display();

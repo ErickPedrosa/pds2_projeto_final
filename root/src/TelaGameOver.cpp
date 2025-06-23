@@ -12,7 +12,7 @@ TelaGameOver::TelaGameOver(float display_height, float display_width) {
     y_atual = 0;
 
     if (!al_init_image_addon()) {
-        std::cout << "Couldn't initialize image addon" << std::endl;
+        std::cout << "couldn't initialize image addon" << std::endl;
     }
 
     sprite = al_load_bitmap("assets/background-night.png");
