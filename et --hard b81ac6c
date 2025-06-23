@@ -1,0 +1,37 @@
+[33m738d4e3[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HUD[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge branch 'main' into HUD
+[33m89e926d[m Merge branch 'main' of https://github.com/ErickPedrosa/pds2_projeto_final
+[33mb09bef1[m Commit inicial HUD
+[33m6cfdf46[m Add files via upload
+[33mb81ac6c[m[33m ([m[1;31morigin/obstaculos[m[33m, [m[1;32mobstaculos[m[33m)[m Corrige surgimento dos canos
+[33m3d08d5e[m Correção dos locais dos arquivos do obstáculo
+[33m61f5e09[m Merge pull request #6 from ErickPedrosa/obstaculos
+[33mc40089e[m Commit inicial com os obstaculos (canos)
+[33m378a6c0[m Merge pull request #5 from ErickPedrosa/hud-silvia
+[33mba9ef25[m Create Branch HUD
+[33mac7b239[m Create VT323-Regular.ttf
+[33m68e7ab2[m Otimização do looping de jogo
+[33m16e560c[m Definições de Constantes para padronizar a mudança de telas
+[33m3dd4d56[m Merge pull request #3 from ErickPedrosa/Modularizacao-Telas
+[33mc730b0f[m[33m ([m[1;31morigin/Modularizacao-Telas[m[33m)[m Modularização de alguns módulos
+[33mf7fcfbc[m Merge pull request #2 from ErickPedrosa/colisão
+[33m64e6d9e[m Detecção de colisão entre 2 objetos
+[33m9938de9[m Adicionei as telas de Placar e de cadastro
+[33mabd0ccc[m Adicionando a classe pássaro
+[33m5b57b90[m Transição entre as telas inicial e de jogo
+[33m8138a85[m Testes Iniciais
+[33m2bd6700[m Merge branch 'main' of https://github.com/ErickPedrosa/pds2_projeto_final
+[33m7f7052b[m Referencia errada no include
+[33m7c5077a[m Merge branch 'main' of https://github.com/ErickPedrosa/pds2_projeto_final
+[33m42ef017[m Update pds2_projeto_final.exe
+[33m22962c2[m Merge branch 'main' of https://github.com/ErickPedrosa/pds2_projeto_final
+[33m45ec7b8[m Update README.md
+[33mad9337d[m configurando o vs code
+[33mefe0e55[m Merge branch 'main' of https://github.com/ErickPedrosa/pds2_projeto_final
+[33m736f447[m configurando visual studio
+[33m1338cdf[m Configurando Allegro
+[33m582a6e4[m Exemplo de Commit
+[33m8cbb1fe[m Upando um  teste
+[33m6da2ca7[m Baixando Doctest
+[33m9fcb717[m Instalando as dependências do Allegro
+[33mec0e66b[m Criando o Projeto no Visual Studio
+[33mf420e52[m Initial commit

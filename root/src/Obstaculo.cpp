@@ -4,17 +4,16 @@
 
 Obstaculo::Obstaculo(int x_inicial, int altura_tela, float abertura) {
     x_atual = x_inicial;
-    y_atual = 0;
     this->altura_tela = altura_tela;
     this->abertura = abertura;
 
     sprite = al_load_bitmap("assets/pipe-green.png");
     if (!sprite) {
-        std::cout << "Erro ao carregar sprite do cano!" << std::endl;
+        std::cout << "couldn't initialize image addon" << std::endl;
     }
 
     largura = al_get_bitmap_width(sprite);
-    y_gap = rand() % (altura_tela - (int)abertura - 200) + 100;
+    y_gap = rand() % (altura_tela - (int)abertura - 200) + 50;
 }
 
 void Obstaculo::atualizar(int velocidade) {
@@ -25,36 +24,48 @@ bool Obstaculo::foraDaTela() const {
     return x_atual + largura < 0;
 }
 
-void Obstaculo::resetar(int novaX) {  // <-- MANTÉM int para bater com o .hpp
+void Obstaculo::resetar(int novaX) {
     x_atual = novaX;
-    y_gap = rand() % (altura_tela - (int)abertura - 200) + 100;
+
+    int margem_superior = 50; // espaço mínimo entre o cano superior e o topo da tela
+    int max_gap_top = altura_tela - abertura - 112 - 50; // 112 = altura da base (chão)
+
+    y_gap = rand() % (max_gap_top - margem_superior + 1) + margem_superior;
 }
 
+
+
 void Obstaculo::Render(float display_height, float display_width) {
+    int altura_cano = al_get_bitmap_height(sprite);
+    int largura_cano = al_get_bitmap_width(sprite);
+
+    // cano de cima
+    float altura_superior = y_gap;
     al_draw_scaled_bitmap(
         sprite,
         0, 0,
-        largura,
-        al_get_bitmap_height(sprite),
+        largura_cano, altura_cano,
         x_atual,
-        y_gap - al_get_bitmap_height(sprite),
-        largura,
-        al_get_bitmap_height(sprite),
+        0, // começa no topo da tela
+        largura_cano,
+        altura_superior, // aumenta se estiver longe do chão
         ALLEGRO_FLIP_VERTICAL
     );
 
+    // cano de baixo
+    float altura_inferior = altura_tela - (y_gap + abertura);
     al_draw_scaled_bitmap(
         sprite,
         0, 0,
-        largura,
-        al_get_bitmap_height(sprite),
+        largura_cano, altura_cano,
         x_atual,
         y_gap + abertura,
-        largura,
-        al_get_bitmap_height(sprite),
+        largura_cano,
+        altura_inferior, // diminue se estiver perto do chão
         0
     );
 }
+
 
 float Obstaculo::getAbertura() const { return abertura; }
 int Obstaculo::getLargura() const { return largura; }
