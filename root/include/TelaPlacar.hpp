@@ -5,6 +5,8 @@
 #include <allegro5/allegro_image.h>
 #include "../include/ObjetoJogo.hpp"
 #include "../include/Botao.hpp"
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 
 #include <vector>
 #include <algorithm>
@@ -13,6 +15,7 @@
 class TelaPlacar : public ObjetoJogo {
 private:
 	Botao* voltar;
+	ALLEGRO_FONT* fonteBotaoP;
 
 
 public:

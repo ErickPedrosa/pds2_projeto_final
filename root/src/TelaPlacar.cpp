@@ -1,6 +1,8 @@
 #include "../include/TelaPlacar.hpp"
 #include <iostream>
 #include <tuple>
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 
 
 #define TELA_INICIO 0
@@ -20,16 +22,28 @@ TelaPlacar::TelaPlacar(float display_height, float display_width){
         //Trown error
     }
 
+    if (!al_init_ttf_addon()) {
+        std::cout << "Erro ao inicializar TTF" << std::endl;
+    }
+
+
     sprite = al_load_bitmap("assets/background-night.png");
 
-    int botao_height = 100;
-    int botao_width = 300;
+    fonteBotaoP = al_load_ttf_font("assets/VT323-Regular.ttf", 28, 0);
+    if (!fonteBotaoP) {
+        std::cout << "Erro ao carregar fonte personalizada!" << std::endl;
+        fonteBotaoP = al_create_builtin_font();
+    }
+
+
+    int botao_height = 60;
+    int botao_width = 220;
 
 
 
-    voltar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) + (botao_height * 1.5),
-        botao_width, botao_height, al_map_rgb(255, 255, 255),
-        "Voltar", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+    voltar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) + 200,
+        botao_width, botao_height, al_map_rgb(255, 255, 204),
+        "Voltar", fonteBotaoP, al_map_rgb(0, 0, 77)
     );
 
 }
@@ -37,6 +51,7 @@ TelaPlacar::TelaPlacar(float display_height, float display_width){
 
 TelaPlacar::~TelaPlacar() {
     al_destroy_bitmap(sprite);
+    al_destroy_font(fonteBotaoP);
 
     delete(voltar);
 
@@ -65,10 +80,16 @@ void TelaPlacar::Render(float display_height, float display_width, std::vector<s
     int x = (display_width / 2) - ((col_width * 3) / 2);
     int y = (display_height / 2) - ((row_height * num_linhas) / 2);
 
-    ALLEGRO_FONT* fonte = al_create_builtin_font();
-    ALLEGRO_COLOR corTexto = al_map_rgb(0, 0, 0);
-    ALLEGRO_COLOR corBorda = al_map_rgb(0, 0, 0);
-    ALLEGRO_COLOR corFundo = al_map_rgb(255, 255, 255);
+    ALLEGRO_FONT* fonteTabela = al_load_ttf_font("assets/VT323-Regular.ttf", 22, 0);
+    if (!fonteTabela) {
+        std::cout << "Erro ao carregar fonte da tabela" << std::endl;
+        return;
+    }
+
+    //ALLEGRO_FONT* fonte = al_create_builtin_font();
+    ALLEGRO_COLOR corTexto = al_map_rgb(255,255,179);
+    ALLEGRO_COLOR corBorda = al_map_rgb(0,0,77);
+    ALLEGRO_COLOR corFundo = al_map_rgb(0,179,179);
 
     int i = 0;
     for (const auto& jogador : topJogadores) {
@@ -78,30 +99,30 @@ void TelaPlacar::Render(float display_height, float display_width, std::vector<s
         int cx = x + 0 * col_width;
         al_draw_filled_rectangle(cx, cy, cx + col_width, cy + row_height, corFundo);
         al_draw_rectangle(cx, cy, cx + col_width, cy + row_height, corBorda, 1);
-        al_draw_text(fonte, corTexto, cx + col_width / 2,
-            cy + row_height / 2 - al_get_font_line_height(fonte) / 2,
+        al_draw_text(fonteTabela, corTexto, cx + col_width / 2,
+            cy + row_height / 2 - al_get_font_line_height(fonteTabela) / 2,
             ALLEGRO_ALIGN_CENTER, std::get<0>(jogador).c_str());
 
         // Pontuação
         cx = x + 1 * col_width;
         al_draw_filled_rectangle(cx, cy, cx + col_width, cy + row_height, corFundo);
         al_draw_rectangle(cx, cy, cx + col_width, cy + row_height, corBorda, 1);
-        al_draw_text(fonte, corTexto, cx + col_width / 2,
-            cy + row_height / 2 - al_get_font_line_height(fonte) / 2,
+        al_draw_text(fonteTabela, corTexto, cx + col_width / 2,
+            cy + row_height / 2 - al_get_font_line_height(fonteTabela) / 2,
             ALLEGRO_ALIGN_CENTER, std::to_string(std::get<1>(jogador)).c_str());
 
         // Número de jogos
         cx = x + 2 * col_width;
         al_draw_filled_rectangle(cx, cy, cx + col_width, cy + row_height, corFundo);
         al_draw_rectangle(cx, cy, cx + col_width, cy + row_height, corBorda, 1);
-        al_draw_text(fonte, corTexto, cx + col_width / 2,
-            cy + row_height / 2 - al_get_font_line_height(fonte) / 2,
+        al_draw_text(fonteTabela, corTexto, cx + col_width / 2,
+            cy + row_height / 2 - al_get_font_line_height(fonteTabela) / 2,
             ALLEGRO_ALIGN_CENTER, std::to_string(std::get<2>(jogador)).c_str());
 
         i++;
     }
 
-    al_destroy_font(fonte); // Evita vazamento de memória
+    al_destroy_font(fonteTabela); // Evita vazamento de memória
 }
 
 

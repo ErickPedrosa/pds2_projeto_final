@@ -40,7 +40,7 @@ TelaGameOver::TelaGameOver(float display_height, float display_width) {
         "Reiniciar", fonteBotaoG, al_map_rgb(0,0,77));
 
     voltarMenu = new Botao((display_width / 2) - (botao_width / 2),
-        (display_height / 2) + 170,
+        (display_height / 2) + 140,
         botao_width, botao_height,
         al_map_rgb(0,179,179),
         "Menu Inicial", fonteBotaoG, al_map_rgb(255,255,204));
