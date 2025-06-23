@@ -1,5 +1,7 @@
 #include "../include/TelaPlacar.hpp"
 #include <iostream>
+#include <tuple>
+
 
 #define TELA_INICIO 0
 #define TELA_PLACAR 1
@@ -25,7 +27,7 @@ TelaPlacar::TelaPlacar(float display_height, float display_width){
 
 
 
-    voltar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) - (botao_height * 1.5),
+    voltar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) + (botao_height * 1.5),
         botao_width, botao_height, al_map_rgb(255, 255, 255),
         "Voltar", al_create_builtin_font(), al_map_rgb(0, 0, 0)
     );
@@ -50,6 +52,56 @@ int TelaPlacar::VerificaClique(int _x, int _y) {
         return TELA_PLACAR;
     }
 
+}
+
+
+void TelaPlacar::Render(float display_height, float display_width, std::vector<std::tuple<std::string, int, int>> topJogadores, int num_linhas) {
+    this->Render(display_height, display_width); // Renderiza o fundo da tela, se necessário
+
+    int col_width = 200;
+    int row_height = 40;
+
+    // Centraliza a tabela horizontalmente e coloca ela mais embaixo verticalmente
+    int x = (display_width / 2) - ((col_width * 3) / 2);
+    int y = (display_height / 2) - ((row_height * num_linhas) / 2);
+
+    ALLEGRO_FONT* fonte = al_create_builtin_font();
+    ALLEGRO_COLOR corTexto = al_map_rgb(0, 0, 0);
+    ALLEGRO_COLOR corBorda = al_map_rgb(0, 0, 0);
+    ALLEGRO_COLOR corFundo = al_map_rgb(255, 255, 255);
+
+    int i = 0;
+    for (const auto& jogador : topJogadores) {
+        int cy = y + i * row_height;
+
+        // Nome
+        int cx = x + 0 * col_width;
+        al_draw_filled_rectangle(cx, cy, cx + col_width, cy + row_height, corFundo);
+        al_draw_rectangle(cx, cy, cx + col_width, cy + row_height, corBorda, 1);
+        al_draw_text(fonte, corTexto, cx + col_width / 2,
+            cy + row_height / 2 - al_get_font_line_height(fonte) / 2,
+            ALLEGRO_ALIGN_CENTER, std::get<0>(jogador).c_str());
+
+        // Pontuação
+        cx = x + 1 * col_width;
+        al_draw_filled_rectangle(cx, cy, cx + col_width, cy + row_height, corFundo);
+        al_draw_rectangle(cx, cy, cx + col_width, cy + row_height, corBorda, 1);
+        al_draw_text(fonte, corTexto, cx + col_width / 2,
+            cy + row_height / 2 - al_get_font_line_height(fonte) / 2,
+            ALLEGRO_ALIGN_CENTER, std::to_string(std::get<1>(jogador)).c_str());
+
+        // Número de jogos
+        cx = x + 2 * col_width;
+        al_draw_filled_rectangle(cx, cy, cx + col_width, cy + row_height, corFundo);
+        al_draw_rectangle(cx, cy, cx + col_width, cy + row_height, corBorda, 1);
+        al_draw_text(fonte, corTexto, cx + col_width / 2,
+            cy + row_height / 2 - al_get_font_line_height(fonte) / 2,
+            ALLEGRO_ALIGN_CENTER, std::to_string(std::get<2>(jogador)).c_str());
+
+        i++;
+    }
+
+    al_destroy_font(fonte); // Evita vazamento de memória
 }
 
 

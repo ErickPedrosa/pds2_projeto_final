@@ -3,6 +3,9 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <algorithm>
+#include <tuple>    
+
 
 void GerenciadorCadastro::Logar(std::string nome) {
     if (!this->joagdorJaExiste(nome)){
@@ -133,6 +136,48 @@ bool GerenciadorCadastro::joagdorJaExiste(std::string nome) {
     FecharArquivo(arq);
     return false;
 }
+
+std::vector<std::tuple<std::string, int, int>> GerenciadorCadastro::TopNJogadores(int n) {
+    std::ifstream* arq = AbrirArquivoParaLeitura();
+    std::vector<std::tuple<std::string, int, int>> jogadores;
+
+    if (!arq) return {};
+
+    std::string linha;
+    while (std::getline(*arq, linha)) {
+        std::stringstream s(linha);
+        std::string nome, jogos, pontos;
+
+        if (std::getline(s, nome, ',') &&
+            std::getline(s, jogos, ',') &&
+            std::getline(s, pontos)) {
+            try {
+                int num_jogos = std::stoi(jogos);
+                int pontuacao = std::stoi(pontos);
+                jogadores.emplace_back(nome, pontuacao, num_jogos);
+            }
+            catch (...) {
+                // Ignora entradas inválidas
+            }
+        }
+    }
+
+    FecharArquivo(arq);
+
+    // Ordena por pontuação decrescente
+    std::sort(jogadores.begin(), jogadores.end(),
+        [](const auto& a, const auto& b) {
+            return std::get<1>(a) > std::get<1>(b);  // maior pontuação primeiro
+        });
+
+    // Retorna apenas os n primeiros
+    if (static_cast<int>(jogadores.size()) > n) {
+        jogadores.resize(n);
+    }
+
+    return jogadores;
+}
+
 
 
 GerenciadorCadastro::GerenciadorCadastro() : num_jogos_jogador_atual(0), nome_jogador_atual(""), pontuacao_maxima_jogador_atual(-1)

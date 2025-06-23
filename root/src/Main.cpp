@@ -162,6 +162,9 @@ int main(int argc, char** argv) {
 			//Limpa a tela
 			al_clear_to_color(al_map_rgb(0, 0, 0));
 
+
+			auto topJogadores = cadastroJogadores->TopNJogadores(5);
+
 			//Condicionais para verificar qual tela deve ser mostrada
 			switch (telaAtual)
 			{
@@ -170,7 +173,7 @@ int main(int argc, char** argv) {
 				break;
 
 			case 1:
-				telaPlacar->Render(al_get_display_height(disp), al_get_display_width(disp));
+				telaPlacar->Render(al_get_display_height(disp), al_get_display_width(disp), topJogadores, 5);
 				break;
 
 			case 2:

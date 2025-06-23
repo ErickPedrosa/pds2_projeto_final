@@ -1,2 +1,7 @@
 Teste1,1,3
 Erick,3,10
+Euuuuu,1,2
+Jogador3267,2,0
+Teste 5,1,5
+Jogador8296,1,0
+Jogador1034,1,0

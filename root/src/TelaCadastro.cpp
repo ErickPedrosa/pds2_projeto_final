@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <ctime>
 
-
 #define TELA_INICIO 0
 #define TELA_PLACAR 1
 #define TELA_CADASTRO 2
