@@ -48,6 +48,9 @@ void Passaro::Render(float display_height, float display_width, int op) {
 
 
         break;
+    case 2:
+        y_atual = y_atual;
+        break;
     }
 
    

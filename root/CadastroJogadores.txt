@@ -5,3 +5,25 @@ Jogador3267,2,0
 Teste 5,1,5
 Jogador8296,1,0
 Jogador1034,1,0
+Jogador4534,1,0
+Jogador5093,1,0
+Jogador5151,1,6
+Jogador6033,2,1
+Jogador6481,1,2
+Jogador6951,1,5
+Jogador7173,1,0
+Jogador7248,1,4
+Jogador7375,1,3
+Jogador7927,1,3
+Jogador1184,1,1
+Jogador1285,1,0
+Jogador1536,1,0
+Jogador1703,1,1
+Jogador2020,1,0
+Jogador3130,1,0
+Jogador3568,1,0
+Jogador3613,1,0
+Jogador3777,1,0
+Jogador3897,1,0
+Jogador4015,1,0
+Jogador4093,1,0

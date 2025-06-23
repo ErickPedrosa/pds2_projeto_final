@@ -2,6 +2,8 @@
 #include <allegro5/allegro_font.h>
 #include <allegro5/mouse.h>
 #include <allegro5/allegro_primitives.h>
+#include <allegro5/allegro_ttf.h>
+
 
 #include "../include/TelaInicial.hpp"
 #include "../include/TelaCadastro.hpp"
@@ -21,6 +23,7 @@
 #define TELA_CADASTRO 2
 #define TELA_JOGO 3
 #define TELA_SAIR -1
+#define TELA_PAUSE 5
 
 
 
@@ -40,12 +43,27 @@ int main(int argc, char** argv) {
 	ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60.0);
 	ALLEGRO_EVENT_QUEUE* filaEventos = al_create_event_queue();
 	ALLEGRO_DISPLAY* disp = al_create_display(1280, 800);
-	ALLEGRO_FONT* font = al_create_builtin_font();
 	ALLEGRO_EVENT evento;
 
+
+	al_init_font_addon();
+	al_init_ttf_addon();
+	ALLEGRO_FONT* fonte = al_load_ttf_font("./assets/VT323-Regular.ttf", 72, 0);
+	if (!fonte) {
+		fonte = al_create_builtin_font();
+
+		//Throw a eception
+	}
+
+	ALLEGRO_COLOR corTexto = al_map_rgb(255, 255, 204);
+	ALLEGRO_COLOR sombra = al_map_rgb(50, 50, 50);
+
 	//Variáveis para timer na Tela de Jogo
-	double tempoInicialPartida = 0.0; 
-	bool entrouNaTelaDeJogo = false; 
+	double tempoInicialPartida = 0.0;
+	double tempoPausado = 0.0;
+	double tempoTotalPausado = 0.0;
+	bool entrouNaTelaDeJogo = false;
+	bool entrouNaTelaDePausa = false;
 
 	//Registrando eventos na pilha
 	al_register_event_source(filaEventos, al_get_keyboard_event_source());
@@ -125,6 +143,7 @@ int main(int argc, char** argv) {
 				jogando = false;
 				break;
 
+
 			default:
 				break;
 			}
@@ -147,6 +166,18 @@ int main(int argc, char** argv) {
 			case ALLEGRO_KEY_SPACE:
 				pulo = true;
 				break;
+			case ALLEGRO_KEY_ESCAPE:
+				if (telaAtual == TELA_JOGO)
+				{
+					telaAtual = TELA_PAUSE;
+				}
+				else if (telaAtual == TELA_PAUSE) {
+					telaAtual = TELA_JOGO;
+				}
+				
+				
+				break;
+
 			}
 		}
 
@@ -186,6 +217,16 @@ int main(int argc, char** argv) {
 					scoreAtual = 0;
 					entrouNaTelaDeJogo = true;
 				}
+
+				if (entrouNaTelaDePausa)
+				{
+
+					tempoInicialPartida += al_get_time() - tempoPausado;
+					
+					entrouNaTelaDePausa = false;
+
+				}
+
 
 				telaJogo->atualizar();
 				telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
@@ -236,6 +277,23 @@ int main(int argc, char** argv) {
 
 				break;
 			}
+			case TELA_PAUSE:
+				if (!entrouNaTelaDePausa) {
+					tempoPausado = al_get_time();
+					entrouNaTelaDePausa = true;
+				}
+
+
+
+				telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp));
+				flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 2);
+
+				al_draw_textf(fonte, sombra, al_get_display_width(disp) / 2 + 2, al_get_display_height(disp)/2 + 2, ALLEGRO_ALIGN_CENTRE, "Jogo Pausado");
+				al_draw_textf(fonte, corTexto, al_get_display_width(disp) / 2 , al_get_display_height(disp) / 2, ALLEGRO_ALIGN_CENTRE, "Jogo Pausado");
+
+
+				
+				break;
 			default:
 				entrouNaTelaDeJogo = false;
 				break;
@@ -263,7 +321,7 @@ int main(int argc, char** argv) {
 
 
 	//Destrui��o dos m�dulos do Allegro
-	al_destroy_font(font);
+	al_destroy_font(fonte);
 	al_destroy_display(disp);
 	al_destroy_timer(timer);
 	al_destroy_event_queue(filaEventos);
