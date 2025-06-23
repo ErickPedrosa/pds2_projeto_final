@@ -194,7 +194,7 @@ int main(int argc, char** argv) {
 					telaAtual = 0;
 					entrouNaTelaDeJogo = false;
 
-					cadastroJogadores->AtualizarJogador(10);
+					cadastroJogadores->AtualizarJogador(scoreAtual);
 
 					//mandar para a tela de game over
 				}
@@ -206,7 +206,7 @@ int main(int argc, char** argv) {
 						telaAtual = 0;
 						entrouNaTelaDeJogo = false;
 
-						cadastroJogadores->AtualizarJogador(10);
+ 						cadastroJogadores->AtualizarJogador(scoreAtual);
 
 						//mandar para a tela de game over
 					}
@@ -227,7 +227,7 @@ int main(int argc, char** argv) {
 				}
 
 				double tempoAtual = al_get_time() - tempoInicialPartida;
-				std::string nomeJogador = "Teste";
+				std::string nomeJogador = telaCadastro->GetInput();
 				telaJogo->AtualizarHUD(scoreAtual, tempoAtual, nomeJogador);
 
 

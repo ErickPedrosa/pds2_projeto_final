@@ -77,6 +77,10 @@ TelaCadastro::~TelaCadastro() {
 }
 
 int TelaCadastro::VerificaClique(int _x, int _y) {
+    input->Ativar(input->FoiClicado(_x, _y));
+
+    
+    
     if (logar->FoiClicado(_x, _y)) {
         return TELA_JOGO;
     }
@@ -86,7 +90,6 @@ int TelaCadastro::VerificaClique(int _x, int _y) {
         return TELA_INICIO; 
     }
 
-    input->Ativar(input->FoiClicado(_x, _y));
 
     return TELA_CADASTRO;
 }
