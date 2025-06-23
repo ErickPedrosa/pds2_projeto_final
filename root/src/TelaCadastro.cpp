@@ -55,7 +55,9 @@ TelaCadastro::TelaCadastro(float display_height, float display_width){
 
 }
 
-
+std::string TelaCadastro::GetInput() {
+    return this->input->ObterTexto();
+}
 
 
 TelaCadastro::~TelaCadastro() {

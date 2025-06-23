@@ -10,6 +10,7 @@
 #include "../include/Passaro.hpp"
 #include "../include/Colisao.hpp"
 #include "../include/Obstaculo.hpp"
+#include "../include/GerenciadorCadastro.hpp"
 
 
 
@@ -60,6 +61,7 @@ int main(int argc, char** argv) {
 	TelaDeJogo* telaJogo = new TelaDeJogo();
 	Passaro* flappy = new Passaro();
 	Colisao* colidir = new Colisao(); 
+	GerenciadorCadastro* cadastroJogadores = new GerenciadorCadastro();
     
 
 	//Vari�veis de controle do jogo
@@ -106,6 +108,15 @@ int main(int argc, char** argv) {
 
 			case TELA_CADASTRO:
 				telaDestino = telaCadastro->VerificaClique(_x, _y);
+
+				if (telaDestino == TELA_JOGO)
+				{
+					//Efetua o login do jogador
+					std::string nomeJogador = telaCadastro->GetInput();
+					cadastroJogadores->Logar(nomeJogador);
+
+				}
+
 				break;
 
 			case TELA_SAIR:
@@ -180,6 +191,9 @@ int main(int argc, char** argv) {
 					flappy->Restart();
 					telaAtual = 0;
 					entrouNaTelaDeJogo = false;
+
+					cadastroJogadores->AtualizarJogador(10);
+
 					//mandar para a tela de game over
 				}
 
@@ -189,6 +203,9 @@ int main(int argc, char** argv) {
 						flappy->Restart();
 						telaAtual = 0;
 						entrouNaTelaDeJogo = false;
+
+						cadastroJogadores->AtualizarJogador(10);
+
 						//mandar para a tela de game over
 					}
 				}
@@ -229,7 +246,7 @@ int main(int argc, char** argv) {
 	delete(telaJogo);
 	delete(flappy);
 	delete(colidir);
-	
+	delete(cadastroJogadores);
 
 
 	//Destrui��o dos m�dulos do Allegro
