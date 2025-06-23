@@ -12,6 +12,7 @@ private:
     int altura_tela;
     int largura;
     int y_gap;
+    bool pontoContabilizado;
 
 public:
     Obstaculo(int x_inicial, int altura_tela, float abertura);
@@ -25,6 +26,9 @@ public:
     int getLargura() const;
     int getYGap() const;
     int getAlturaTela() const;
+    //Função para incrementar o score
+    bool jaContabilizado() const;
+    void marcarComoContabilizado();
 };
 
 #endif

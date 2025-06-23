@@ -68,6 +68,7 @@ int main(int argc, char** argv) {
 	bool jogando = true;
 	bool pulo = false;
 	int telaAtual = 0;
+	int scoreAtual = 0;
 
 
 	//Inicio do timer do jogo
@@ -179,6 +180,7 @@ int main(int argc, char** argv) {
 			case 3: {
 				if (!entrouNaTelaDeJogo) {
 					tempoInicialPartida = al_get_time();
+					scoreAtual = 0;
 					entrouNaTelaDeJogo = true;
 				}
 
@@ -210,13 +212,21 @@ int main(int argc, char** argv) {
 					}
 				}
 
+				for (auto cano : telaJogo->getObstaculos()) {
+					if (!cano->jaContabilizado() &&
+						flappy->getX() > cano->getX() + cano->getLargura()) {
+
+						scoreAtual++;
+						cano->marcarComoContabilizado();
+					}
+				}
+
 				if (pulo) {
 					flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
 
 				}
 
 				double tempoAtual = al_get_time() - tempoInicialPartida;
-				int scoreAtual = static_cast <int>(tempoAtual);
 				std::string nomeJogador = "Teste";
 				telaJogo->AtualizarHUD(scoreAtual, tempoAtual, nomeJogador);
 

@@ -14,6 +14,8 @@ Obstaculo::Obstaculo(int x_inicial, int altura_tela, float abertura) {
 
     largura = al_get_bitmap_width(sprite);
     y_gap = rand() % (altura_tela - (int)abertura - 200) + 50;
+
+    pontoContabilizado = false;
 }
 
 void Obstaculo::atualizar(int velocidade) {
@@ -31,6 +33,8 @@ void Obstaculo::resetar(int novaX) {
     int max_gap_top = altura_tela - abertura - 112 - 50; // 112 = altura da base (chão)
 
     y_gap = rand() % (max_gap_top - margem_superior + 1) + margem_superior;
+
+    pontoContabilizado = false;
 }
 
 
@@ -71,3 +75,11 @@ float Obstaculo::getAbertura() const { return abertura; }
 int Obstaculo::getLargura() const { return largura; }
 int Obstaculo::getYGap() const { return y_gap; }
 int Obstaculo::getAlturaTela() const { return altura_tela; }
+
+bool Obstaculo::jaContabilizado() const {
+    return pontoContabilizado;
+}
+
+void Obstaculo::marcarComoContabilizado() {
+    pontoContabilizado = true;
+}
