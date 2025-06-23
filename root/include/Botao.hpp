@@ -4,6 +4,7 @@
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 #include <string>
 
 struct Botao
@@ -22,8 +23,12 @@ struct Botao
 	}
 
 	void GerarBotao() {
+		float raio = 20.0;
 
-		al_draw_filled_rectangle(x, y, x + width, y + height, cor);
+		// Cor de fundo
+		al_draw_filled_rounded_rectangle(x, y, x + width, y + height, raio, raio, cor);
+		//Borda para contraste
+		al_draw_rounded_rectangle(x, y, x + width, y + height, raio, raio, al_map_rgb(0, 0, 77), 1);
 
 		al_draw_text(fonte, corDoTexto,
 			x + width / 2,

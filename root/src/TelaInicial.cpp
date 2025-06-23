@@ -1,5 +1,7 @@
 #include "../include/TelaInicial.hpp"
 #include <iostream>
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 
 #define TELA_INICIO 0
 #define TELA_PLACAR 1
@@ -18,24 +20,41 @@ TelaInicial::TelaInicial(float display_height, float display_width){
         //Trown error
     }
 
+    if (!al_init_ttf_addon()) {
+        std::cout << "Erro ao inicializar TTF" << std::endl;
+    }
+
     sprite = al_load_bitmap("assets/background-night.png");
 
-    int botao_height = 100;
-    int botao_width = 300;
+    fonteBotao = al_load_ttf_font("assets/VT323-Regular.ttf", 28, 0);
+    if (!fonteBotao) {
+        std::cout << "Erro ao carregar fonte personalizada!" << std::endl;
+        fonteBotao = al_create_builtin_font();
+    }
+
+    fonteTitulo = al_load_ttf_font("assets/VT323-Regular.ttf", 60, 0);
+    if (!fonteTitulo) {
+        std::cout << "Erro ao carregar fonte personalizada!" << std::endl;
+    }
+
+
+
+    int botao_height = 60;
+    int botao_width = 220;
 
     jogar = new Botao( (display_width/2) - (botao_width/2), (display_height / 2) - (botao_height * 1.5),
-                        botao_width, botao_height, al_map_rgb(255, 255, 255),
-                        "Jogar", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+                        botao_width, botao_height, al_map_rgb(255, 255, 204),
+                        "Jogar", fonteBotao, al_map_rgb(0, 0, 77)
     );
 
     placar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) ,
-        botao_width, botao_height, al_map_rgb(255, 255, 255),
-        "Placar", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+        botao_width, botao_height, al_map_rgb(0,179,179),
+        "Placar", fonteBotao, al_map_rgb(255,255,204)
     );
 
     sair = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) + (botao_height * 1.5),
-        botao_width, botao_height, al_map_rgb(255, 255, 255),
-        "Sair", al_create_builtin_font(), al_map_rgb(0, 0, 0)
+        botao_width, botao_height, al_map_rgb(255, 255, 204),
+        "Sair", fonteBotao, al_map_rgb(0, 0, 77)
     );
 
 }
@@ -44,7 +63,8 @@ TelaInicial::TelaInicial(float display_height, float display_width){
 
 TelaInicial::~TelaInicial() {
     al_destroy_bitmap(sprite);
-
+    al_destroy_font(fonteBotao);
+    al_destroy_font(fonteTitulo);
     delete(jogar);
     delete(placar);
     delete(sair);
@@ -98,7 +118,20 @@ void TelaInicial::Render(float display_height, float display_width) {
             img_h * escala_h,             
             0
         );
+        al_draw_text(fonteTitulo, al_map_rgb(255, 255, 204),
+            display_width / 2,
+            200,
+            ALLEGRO_ALIGN_CENTER,
+            "FLAPPY BIRD");
+        al_draw_text(fonteTitulo, al_map_rgb(50, 50, 50),
+            display_width / 2 + 2,
+            202,
+            ALLEGRO_ALIGN_CENTER,
+            "FLAPPY BIRD");
+
+    
     }
+
 
     jogar->GerarBotao();
     placar->GerarBotao();

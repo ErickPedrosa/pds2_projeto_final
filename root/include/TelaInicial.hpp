@@ -5,6 +5,8 @@
 #include <allegro5/allegro_image.h>
 #include "../include/ObjetoJogo.hpp"
 #include "../include/Botao.hpp"
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 
 
 class TelaInicial : public ObjetoJogo {
@@ -12,6 +14,8 @@ class TelaInicial : public ObjetoJogo {
 		Botao *jogar;
 		Botao *placar;
 		Botao *sair;
+		ALLEGRO_FONT* fonteBotao;
+		ALLEGRO_FONT* fonteTitulo;
 
 
 	public:
