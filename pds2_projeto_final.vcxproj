@@ -155,6 +155,7 @@
     <ClCompile Include="root\src\TelaDeJogo.cpp" />
     <ClCompile Include="root\src\TelaInicial.cpp" />
     <ClCompile Include="root\src\TelaPlacar.cpp" />
+    <ClCompile Include="TelaGameOver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="root\include\Colisao.hpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="root\include\TelaDeJogo.hpp" />
     <ClInclude Include="root\include\TelaInicial.hpp" />
     <ClInclude Include="root\include\TelaPlacar.hpp" />
+    <ClInclude Include="TelaGameOver.hpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

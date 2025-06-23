@@ -11,6 +11,7 @@
 #include "../include/Colisao.hpp"
 #include "../include/Obstaculo.hpp"
 #include "../include/GerenciadorCadastro.hpp"
+#include "../include/TelaGameOver.hpp"
 
 
 
@@ -21,6 +22,7 @@
 #define TELA_CADASTRO 2
 #define TELA_JOGO 3
 #define TELA_SAIR -1
+#define TELA_GAMEOVER 4
 
 
 
@@ -62,7 +64,8 @@ int main(int argc, char** argv) {
 	Passaro* flappy = new Passaro();
 	Colisao* colidir = new Colisao(); 
 	GerenciadorCadastro* cadastroJogadores = new GerenciadorCadastro();
-    
+	TelaGameOver* telaGameOver = new TelaGameOver(al_get_display_height(disp), al_get_display_width(disp));
+
 
 	//Vari�veis de controle do jogo
 	bool jogando = true;
@@ -118,6 +121,9 @@ int main(int argc, char** argv) {
 
 				}
 
+				break;
+			case TELA_GAMEOVER: 
+				telaDestino = telaGameOver->VerificaClique(_x, _y);
 				break;
 
 			case TELA_SAIR:
@@ -191,7 +197,7 @@ int main(int argc, char** argv) {
 				if (colidir->colidirT(flappy, telaJogo)) {
 					telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
 					flappy->Restart();
-					telaAtual = 0;
+					telaAtual = TELA_GAMEOVER;;
 					entrouNaTelaDeJogo = false;
 
 					cadastroJogadores->AtualizarJogador(10);
@@ -203,7 +209,7 @@ int main(int argc, char** argv) {
 					if (colidir->colidirO(flappy, cano)) {
  						telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
 						flappy->Restart();
-						telaAtual = 0;
+						telaAtual = TELA_GAMEOVER;;
 						entrouNaTelaDeJogo = false;
 
 						cadastroJogadores->AtualizarJogador(10);
@@ -233,15 +239,13 @@ int main(int argc, char** argv) {
 
 				break;
 			}
+			case TELA_GAMEOVER: 
+				telaGameOver->Render(al_get_display_height(disp), al_get_display_width(disp));
+				break;
 			default:
 				entrouNaTelaDeJogo = false;
 				break;
 			}
-
-
-
-		}
-
 
 
 		//Renderiza a tela no display
@@ -257,6 +261,7 @@ int main(int argc, char** argv) {
 	delete(flappy);
 	delete(colidir);
 	delete(cadastroJogadores);
+	delete(telaGameOver);
 
 
 	//Destrui��o dos m�dulos do Allegro
