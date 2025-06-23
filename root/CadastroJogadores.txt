@@ -47,3 +47,7 @@ Jogador8905,1,0
 Jogador9434,1,0
 Jogador9973,1,0
 Jogador1080,1,0
+silvia,2,8
+Jogador8340,1,0
+SILVIA,1,2
+Jogador6573,1,0

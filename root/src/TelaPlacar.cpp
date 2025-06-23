@@ -42,8 +42,8 @@ TelaPlacar::TelaPlacar(float display_height, float display_width){
 
 
     voltar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) + 200,
-        botao_width, botao_height, al_map_rgb(255, 255, 204),
-        "Voltar", fonteBotaoP, al_map_rgb(0, 0, 77)
+        botao_width, botao_height, al_map_rgb(0,179,179),
+        "Voltar", fonteBotaoP, al_map_rgb(255,255,204)
     );
 
 }
@@ -86,10 +86,13 @@ void TelaPlacar::Render(float display_height, float display_width, std::vector<s
         return;
     }
 
-    //ALLEGRO_FONT* fonte = al_create_builtin_font();
-    ALLEGRO_COLOR corTexto = al_map_rgb(255,255,179);
+    
+    ALLEGRO_COLOR corTexto = al_map_rgb(0,0,77);
     ALLEGRO_COLOR corBorda = al_map_rgb(0,0,77);
-    ALLEGRO_COLOR corFundo = al_map_rgb(0,179,179);
+    ALLEGRO_COLOR corFundo = al_map_rgb(255,255,204);
+
+  
+
 
     int i = 0;
     for (const auto& jogador : topJogadores) {
@@ -122,7 +125,7 @@ void TelaPlacar::Render(float display_height, float display_width, std::vector<s
         i++;
     }
 
-    al_destroy_font(fonteTabela); // Evita vazamento de memória
+    al_destroy_font(fonteTabela); 
 }
 
 

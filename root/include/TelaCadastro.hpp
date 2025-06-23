@@ -6,6 +6,8 @@
 #include "../include/ObjetoJogo.hpp"
 #include "../include/Botao.hpp"
 #include "../include/CaixaDeTexto.hpp"
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 
 
 class TelaCadastro : public ObjetoJogo {

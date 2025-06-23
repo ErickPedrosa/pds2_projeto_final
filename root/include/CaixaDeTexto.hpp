@@ -52,14 +52,18 @@ public:
     }
 
     void Desenhar() {
-        al_draw_filled_rectangle(x, y, x + width, y + height, corFundo);
-        al_draw_rectangle(x, y, x + width, y + height, al_map_rgb(0, 0, 0), 2);
+        float raio = 6.0f;  
+        // Fundo arredondado
+        al_draw_filled_rounded_rectangle(x, y, x + width, y + height, raio, raio, corFundo);
+
+        // Borda arredondada
+        al_draw_rounded_rectangle(x, y, x + width, y + height, raio, raio, al_map_rgb(0, 0, 77), 1);
 
         std::string exibido = texto;
         ALLEGRO_COLOR cor = corTexto;
 
-        al_draw_text(fonte, cor, x + 5, y + height / 2 - al_get_font_line_height(fonte) / 2,
-            0, exibido.c_str());
+        al_draw_text(fonte, cor, x + width/2, y + height / 2 - al_get_font_line_height(fonte) / 2, ALLEGRO_ALIGN_CENTER,
+           exibido.c_str());
     }
 
  };

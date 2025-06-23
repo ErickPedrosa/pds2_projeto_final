@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 
 #define TELA_INICIO 0
 #define TELA_PLACAR 1
@@ -20,13 +22,22 @@ TelaCadastro::TelaCadastro(float display_height, float display_width){
         //Trown error
     }
 
+    if (!al_init_ttf_addon()) {
+        std::cout << "Erro ao inicializar TTF!" << std::endl;
+    }
+
+
     sprite = al_load_bitmap("assets/background-night.png");
 
-    int botao_height = 100;
-    int botao_width = 300;
+    fonte = al_load_ttf_font("assets/VT323-Regular.ttf", 28, 0);
+    if (!fonte) {
+        std::cout << "Erro ao carregar fonte personalizada!" << std::endl;
+    }
+    
+    int botao_height = 60;
+    int botao_width = 220;
 
-    fonte = al_create_builtin_font();
-
+    
     std::srand(std::time(nullptr)); 
     int numero = 1000 + std::rand() % 9000;
     std::string placeholder = "Jogador" + std::to_string(numero);
@@ -36,20 +47,20 @@ TelaCadastro::TelaCadastro(float display_height, float display_width){
     input = new CaixaDeTexto(
         (display_width / 2) - (botao_width / 2), (display_height / 2) - (botao_height * 1.5),
         botao_width, botao_height / 2,
-        al_map_rgb(255, 255, 255),           
-        al_map_rgb(0, 0, 0),                 
+        al_map_rgb(255, 255, 230),           
+        al_map_rgb(0, 0, 77),                 
         fonte,
         placeholder
     );
 
     logar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2),
-        botao_width, botao_height, al_map_rgb(255, 255, 255),
-        "Logar", fonte, al_map_rgb(0, 0, 0)
+        botao_width, botao_height, al_map_rgb(0,179,179),
+        "Logar", fonte, al_map_rgb(255, 255, 204)
     );
 
     voltar = new Botao((display_width / 2) - (botao_width / 2), (display_height / 2) + (botao_height * 1.5),
-        botao_width, botao_height, al_map_rgb(255, 255, 255),
-        "Voltar", fonte, al_map_rgb(0, 0, 0)
+        botao_width, botao_height, al_map_rgb(255, 255, 204),
+        "Voltar", fonte, al_map_rgb(0,0,77)
     );
 
 }
@@ -139,6 +150,16 @@ void TelaCadastro::Render(float display_height, float display_width) {
             0
         );
     }
+    al_draw_text(fonte, al_map_rgb(0, 0, 0),
+        display_width / 2 + 2,
+        (display_height / 2) - 160 + 2,
+        ALLEGRO_ALIGN_CENTER,
+        "Clique na caixa de texto abaixo e digite seu apelido:");
+    al_draw_text(fonte, al_map_rgb(255,255, 204),
+        display_width / 2,
+        (display_height / 2) - 160,
+        ALLEGRO_ALIGN_CENTER,
+        "Clique na caixa de texto abaixo e digite seu apelido:");
 
     logar->GerarBotao();
     voltar->GerarBotao();
