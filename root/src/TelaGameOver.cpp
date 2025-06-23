@@ -1,5 +1,7 @@
 #include "../include/TelaGameOver.hpp"
 #include <iostream>
+#include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_font.h>
 
 #define TELA_INICIO 0
 #define TELA_PLACAR 1
@@ -15,23 +17,33 @@ TelaGameOver::TelaGameOver(float display_height, float display_width) {
             std::cout << "couldn't initialize image addon" << std::endl;
         }
 
+        if (!al_init_ttf_addon()) {
+            std::cout << "Erro ao inicializar TTF!" << std::endl;
+        }
+
     sprite = al_load_bitmap("assets/background-night.png");
     gameOverImg = al_load_bitmap("assets/gameover.png");
 
-    int botao_height = 100;
-    int botao_width = 300;
+
+    fonteBotaoG = al_load_ttf_font("assets/VT323-Regular.ttf", 28, 0);
+    if (!fonteBotaoG) {
+        std::cout << "Erro ao carregar fonte personalizada!" << std::endl;
+        fonteBotaoG = al_create_builtin_font();
+    }
+    int botao_height = 60;
+    int botao_width = 220;
 
     reiniciar = new Botao((display_width / 2) - (botao_width / 2),
         (display_height / 2) + 50,
         botao_width, botao_height,
-        al_map_rgb(255, 255, 255),
-        "Reiniciar", al_create_builtin_font(), al_map_rgb(0, 0, 0));
+        al_map_rgb(255, 255, 204),
+        "Reiniciar", fonteBotaoG, al_map_rgb(0,0,77));
 
     voltarMenu = new Botao((display_width / 2) - (botao_width / 2),
         (display_height / 2) + 170,
         botao_width, botao_height,
-        al_map_rgb(200, 200, 200),
-        "Menu Inicial", al_create_builtin_font(), al_map_rgb(0, 0, 0));
+        al_map_rgb(0,179,179),
+        "Menu Inicial", fonteBotaoG, al_map_rgb(255,255,204));
 
 
 }
@@ -39,6 +51,7 @@ TelaGameOver::TelaGameOver(float display_height, float display_width) {
 TelaGameOver::~TelaGameOver() {
     al_destroy_bitmap(sprite);
     al_destroy_bitmap(gameOverImg);
+    al_destroy_font(fonteBotaoG);
     delete reiniciar;
     delete voltarMenu;
 }

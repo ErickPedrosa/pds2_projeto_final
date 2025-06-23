@@ -25,10 +25,14 @@ struct Botao
 	void GerarBotao() {
 		float raio = 20.0;
 
+		//Constrate deslocado para botao
+		al_draw_filled_rounded_rectangle(x + 2, y + 2, x + width + 2, y + height + 2, raio, raio, al_map_rgba(0, 0, 0, 80));
 		// Cor de fundo
 		al_draw_filled_rounded_rectangle(x, y, x + width, y + height, raio, raio, cor);
 		//Borda para contraste
 		al_draw_rounded_rectangle(x, y, x + width, y + height, raio, raio, al_map_rgb(0, 0, 77), 1);
+		
+		
 
 		al_draw_text(fonte, corDoTexto,
 			x + width / 2,

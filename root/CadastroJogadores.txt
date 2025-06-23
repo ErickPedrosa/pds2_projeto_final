@@ -36,3 +36,9 @@ Jogador9680,1,0
 Jogador9817,1,0
 Jogador2636,2,1
 samis,1,2
+Jogador2952,1,0
+Jogador3242,1,0
+Jogador3494,1,0
+Jogador3641,1,0
+Jogador3876,1,0
+Jogador4137,1,0
