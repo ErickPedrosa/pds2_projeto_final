@@ -27,3 +27,12 @@ Jogador3777,1,0
 Jogador3897,1,0
 Jogador4015,1,0
 Jogador4093,1,0
+Jogador2179,1,1
+Jogador2486,1,0
+Jogador2574,1,0
+Jogador3113,1,0
+Jogador3247,1,0
+Jogador9680,1,0
+Jogador9817,1,0
+Jogador2636,2,1
+samis,1,2

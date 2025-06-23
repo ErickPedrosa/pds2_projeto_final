@@ -13,7 +13,7 @@
 #include "../include/Colisao.hpp"
 #include "../include/Obstaculo.hpp"
 #include "../include/GerenciadorCadastro.hpp"
-
+#include "../include/TelaGameOver.hpp"
 
 
 #define SUCESSO 0
@@ -23,6 +23,7 @@
 #define TELA_CADASTRO 2
 #define TELA_JOGO 3
 #define TELA_SAIR -1
+#define TELA_GAMEOVER 4
 #define TELA_PAUSE 5
 
 
@@ -77,6 +78,7 @@ int main(int argc, char** argv) {
 	TelaCadastro* telaCadastro = new TelaCadastro(al_get_display_height(disp), al_get_display_width(disp));
 	TelaPlacar* telaPlacar = new TelaPlacar(al_get_display_height(disp), al_get_display_width(disp));
 	TelaDeJogo* telaJogo = new TelaDeJogo();
+	TelaGameOver* telaGameOver = new TelaGameOver(al_get_display_height(disp), al_get_display_width(disp));
 	Passaro* flappy = new Passaro();
 	Colisao* colidir = new Colisao(); 
 	GerenciadorCadastro* cadastroJogadores = new GerenciadorCadastro();
@@ -136,6 +138,10 @@ int main(int argc, char** argv) {
 
 				}
 
+				break;
+
+			case TELA_GAMEOVER: 
+				telaDestino = telaGameOver->VerificaClique(_x, _y);
 				break;
 
 			case TELA_SAIR:
@@ -235,7 +241,7 @@ int main(int argc, char** argv) {
 				if (colidir->colidirT(flappy, telaJogo)) {
 					telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
 					flappy->Restart();
-					telaAtual = 0;
+					telaAtual = TELA_GAMEOVER;
 					entrouNaTelaDeJogo = false;
 
 					cadastroJogadores->AtualizarJogador(scoreAtual);
@@ -247,7 +253,7 @@ int main(int argc, char** argv) {
 					if (colidir->colidirO(flappy, cano)) {
  						telaJogo->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
 						flappy->Restart();
-						telaAtual = 0;
+						telaAtual = TELA_GAMEOVER;;
 						entrouNaTelaDeJogo = false;
 
  						cadastroJogadores->AtualizarJogador(scoreAtual);
@@ -277,6 +283,13 @@ int main(int argc, char** argv) {
 
 				break;
 			}
+			case TELA_GAMEOVER: 
+				telaGameOver->Render(al_get_display_height(disp), al_get_display_width(disp));
+				break;
+			default:
+				entrouNaTelaDeJogo = false;
+				break;
+			
 			case TELA_PAUSE:
 				if (!entrouNaTelaDePausa) {
 					tempoPausado = al_get_time();
@@ -294,7 +307,7 @@ int main(int argc, char** argv) {
 
 				
 				break;
-			default:
+		
 				entrouNaTelaDeJogo = false;
 				break;
 			}
@@ -318,6 +331,7 @@ int main(int argc, char** argv) {
 	delete(flappy);
 	delete(colidir);
 	delete(cadastroJogadores);
+	delete telaGameOver;
 
 
 	//Destrui��o dos m�dulos do Allegro

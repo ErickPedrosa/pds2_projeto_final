@@ -153,6 +153,7 @@
     <ClCompile Include="root\src\Passaro.cpp" />
     <ClCompile Include="root\src\TelaCadastro.cpp" />
     <ClCompile Include="root\src\TelaDeJogo.cpp" />
+    <ClCompile Include="root\src\TelaGameOver.cpp" />
     <ClCompile Include="root\src\TelaInicial.cpp" />
     <ClCompile Include="root\src\TelaPlacar.cpp" />
   </ItemGroup>
@@ -168,6 +169,7 @@
     <ClInclude Include="root\include\Passaro.hpp" />
     <ClInclude Include="root\include\TelaCadastro.hpp" />
     <ClInclude Include="root\include\TelaDeJogo.hpp" />
+    <ClInclude Include="root\include\TelaGameOver.hpp" />
     <ClInclude Include="root\include\TelaInicial.hpp" />
     <ClInclude Include="root\include\TelaPlacar.hpp" />
   </ItemGroup>
