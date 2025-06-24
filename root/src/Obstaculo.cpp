@@ -18,6 +18,13 @@ Obstaculo::Obstaculo(int x_inicial, int altura_tela, float abertura) {
     pontoContabilizado = false;
 }
 
+Obstaculo::~Obstaculo() {
+    if (sprite) {
+        al_destroy_bitmap(sprite); 
+        sprite = nullptr; 
+    }
+}
+
 void Obstaculo::atualizar(int velocidade) {
     x_atual -= velocidade;
 }
