@@ -49,8 +49,8 @@ int main(int argc, char** argv) {
 	ALLEGRO_EVENT_QUEUE* filaEventos = al_create_event_queue();
 	ALLEGRO_DISPLAY* disp = al_create_display(1280, 800);
 	ALLEGRO_EVENT evento;
-	ALLEGRO_SAMPLE* som_pulo = al_load_sample("wingflap.mp3");
-	ALLEGRO_AUDIO_STREAM* som_fundo = al_load_audio_stream("musica_fundo.mp3", 4, 2048);
+	ALLEGRO_SAMPLE* som_pulo = al_load_sample("../assets/wingflap.wav");
+	ALLEGRO_AUDIO_STREAM* som_fundo = al_load_audio_stream("../assets/musica_fundo.wav", 4, 2048);
 	
 
 

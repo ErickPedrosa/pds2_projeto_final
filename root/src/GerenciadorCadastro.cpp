@@ -157,18 +157,18 @@ std::vector<std::tuple<std::string, int, int>> GerenciadorCadastro::TopNJogadore
                 jogadores.emplace_back(nome, pontuacao, num_jogos);
             }
             catch (...) {
-                // Ignora entradas inválidas
+                // Ignora entradas invï¿½lidas
             }
         }
     }
 
     FecharArquivo(arq);
 
-    // Ordena por pontuação decrescente
+    // Ordena por pontuaï¿½ï¿½o decrescente
     std::sort(jogadores.begin(), jogadores.end(),
-        [](const auto& a, const auto& b) {
-            return std::get<1>(a) > std::get<1>(b);  // maior pontuação primeiro
-        });
+    [](const std::tuple<std::string, int, int>& a, const std::tuple<std::string, int, int>& b) {
+        return std::get<1>(a) > std::get<1>(b);  // maior pontuaÃ§Ã£o primeiro
+    });
 
     // Retorna apenas os n primeiros
     if (static_cast<int>(jogadores.size()) > n) {
