@@ -20,7 +20,7 @@ public:
 	TelaGameOver(float display_height, float display_width);
 	~TelaGameOver();
 
-		void Render(float display_height, float display_width) override;
+	void Render(float display_height, float display_width) override;
 	int VerificaClique(int _x, int _y);
 	int getWidth() const;
 	int getHeight() const;
