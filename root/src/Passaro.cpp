@@ -12,7 +12,7 @@ Passaro::Passaro() : escala(1.5) {
         //Trown error
     }
 
-    sprite = al_load_bitmap("assets/bluebird-midflap.png");
+    sprite = al_load_bitmap("assets/bluebird-midflap-lacinho-redimensionado.png");
 }
 
 
