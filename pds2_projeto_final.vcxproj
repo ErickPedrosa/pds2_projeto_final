@@ -143,7 +143,7 @@
     <ClCompile Include="root\include\CaixaDeTexto.hpp" />
     <ClCompile Include="root\src\Colisao.cpp" />
     <ClCompile Include="root\include\IRenderizavel.hpp" />
-    <ClCompile Include="root\src\GerenciadorCadstro.cpp" />
+    <ClCompile Include="root\src\GerenciadorCadastro.cpp" />
     <ClCompile Include="root\src\HUD.cpp" />
     <ClCompile Include="root\src\Main.cpp" />
     <ClCompile Include="root\src\Obstaculo.cpp">

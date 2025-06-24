@@ -353,8 +353,16 @@ int main(int argc, char** argv) {
 	al_destroy_timer(timer);
 	al_destroy_event_queue(filaEventos);
 	al_destroy_sample(som_pulo);
+	al_detach_audio_stream(som_fundo); 
+	
 	al_destroy_audio_stream(som_fundo);
+
 	al_uninstall_audio();
+	al_shutdown_ttf_addon();
+	al_shutdown_font_addon();
+	al_shutdown_primitives_addon();
+	al_shutdown_image_addon();
+	al_uninstall_system();
 
 
 	return SUCESSO;
