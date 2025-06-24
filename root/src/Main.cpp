@@ -1,4 +1,6 @@
-﻿#include <allegro5/allegro5.h>
+﻿/*
+
+#include <allegro5/allegro5.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/mouse.h>
 #include <allegro5/allegro_primitives.h>
@@ -6,7 +8,7 @@
 #include <allegro5/allegro_audio.h>
 #include <allegro5/allegro_acodec.h>
 
-
+#include <iostream>
 
 #include "../include/TelaInicial.hpp"
 #include "../include/TelaCadastro.hpp"
@@ -124,6 +126,8 @@ int main(int argc, char** argv) {
 		if (evento.type == ALLEGRO_EVENT_MOUSE_BUTTON_DOWN) {
 			int _x = evento.mouse.x;
 			int _y = evento.mouse.y;
+
+			std::cout << "X: " << _x << "Y: " << _y << std::endl; //x e y impressos no terminal para fins de debug e testes
 
 			int telaDestino = telaAtual; //Por default se mant�m;
 
@@ -355,3 +359,6 @@ int main(int argc, char** argv) {
 
 	return SUCESSO;
 }
+
+
+*/
