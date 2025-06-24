@@ -17,7 +17,10 @@ Passaro::Passaro() : escala(1.5) {
 
 
 Passaro::~Passaro() {
-    al_destroy_bitmap(sprite);
+    if (sprite) {
+        al_destroy_bitmap(sprite);
+        sprite = nullptr;
+    }
 }
 
 void Passaro::Render(float display_height, float display_width) {
