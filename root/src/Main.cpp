@@ -3,6 +3,9 @@
 #include <allegro5/mouse.h>
 #include <allegro5/allegro_primitives.h>
 #include <allegro5/allegro_ttf.h>
+#include <allegro5/allegro_audio.h>
+#include <allegro5/allegro_acodec.h>
+
 
 
 #include "../include/TelaInicial.hpp"
@@ -36,16 +39,23 @@ int main(int argc, char** argv) {
 	al_install_keyboard();
 	al_install_mouse();
 	al_init_primitives_addon();
-
-
-
+	al_install_audio();
+	al_init_acodec_addon();
+	al_reserve_samples(2);
+	
 
 	//Inicializa��o dos m�dulos do Allegro
 	ALLEGRO_TIMER* timer = al_create_timer(1.0 / 60.0);
 	ALLEGRO_EVENT_QUEUE* filaEventos = al_create_event_queue();
 	ALLEGRO_DISPLAY* disp = al_create_display(1280, 800);
 	ALLEGRO_EVENT evento;
+	ALLEGRO_SAMPLE* som_pulo = al_load_sample("wingflap.mp3");
+	ALLEGRO_AUDIO_STREAM* som_fundo = al_load_audio_stream("musica_fundo.mp3", 4, 2048);
+	
 
+
+	al_set_audio_stream_playmode(som_fundo, ALLEGRO_PLAYMODE_LOOP);
+	al_attach_audio_stream_to_mixer(som_fundo, al_get_default_mixer());
 
 	al_init_font_addon();
 	al_init_ttf_addon();
@@ -101,7 +111,7 @@ int main(int argc, char** argv) {
 
 		//Espera por um evento na fila
 		al_wait_for_event(filaEventos, &evento);
-
+		
 
 		//Acaba com o programa 
 		if (evento.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
@@ -144,8 +154,8 @@ int main(int argc, char** argv) {
 				telaDestino = telaGameOver->VerificaClique(_x, _y);
 				break;
 
-			case TELA_SAIR:
-				//Thrown a error
+            case TELA_SAIR:
+            //Thrown an error
 				jogando = false;
 				break;
 
@@ -246,7 +256,6 @@ int main(int argc, char** argv) {
 
 					cadastroJogadores->AtualizarJogador(scoreAtual);
 
-					//mandar para a tela de game over
 				}
 
 				for (auto cano : telaJogo->getObstaculos()) {
@@ -258,7 +267,7 @@ int main(int argc, char** argv) {
 
  						cadastroJogadores->AtualizarJogador(scoreAtual);
 
-						//mandar para a tela de game over
+						
 					}
 				}
 
@@ -273,7 +282,7 @@ int main(int argc, char** argv) {
 
 				if (pulo) {
 					flappy->Render(al_get_display_height(disp), al_get_display_width(disp), 1);
-
+					al_play_sample(som_pulo, 0.5, 0.0, 1.0, ALLEGRO_PLAYMODE_ONCE, NULL);
 				}
 
 				double tempoAtual = al_get_time() - tempoInicialPartida;
@@ -339,6 +348,9 @@ int main(int argc, char** argv) {
 	al_destroy_display(disp);
 	al_destroy_timer(timer);
 	al_destroy_event_queue(filaEventos);
+	al_destroy_sample(som_pulo);
+	al_destroy_audio_stream(som_fundo);
+	al_uninstall_audio();
 
 
 	return SUCESSO;
