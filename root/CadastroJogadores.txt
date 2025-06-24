@@ -62,3 +62,4 @@ Jogador1675,1,2
 Jogador1909,1,0
 Jogador5009,2,4
 Jogador7471,2,0
+Jogador7230,2,0
