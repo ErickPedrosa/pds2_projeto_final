@@ -337,13 +337,13 @@ int main(int argc, char** argv) {
 	}
 
 	//Desaloca��o dos objetos
-	delete(telaInicio);
-	delete(telaCadastro);
-	delete(telaPlacar);
-	delete(telaJogo);
-	delete(flappy);
-	delete(colidir);
-	delete(cadastroJogadores);
+	delete telaInicio;
+	delete telaCadastro;
+	delete telaPlacar;
+	delete telaJogo;
+	delete flappy;
+	delete colidir;
+	delete cadastroJogadores;
 	delete telaGameOver;
 
 
