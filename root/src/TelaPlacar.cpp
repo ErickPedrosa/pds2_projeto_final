@@ -91,12 +91,24 @@ void TelaPlacar::Render(float display_height, float display_width, std::vector<s
     ALLEGRO_COLOR corBorda = al_map_rgb(0,0,77);
     ALLEGRO_COLOR corFundo = al_map_rgb(255,255,204);
 
-  
+    int cy_header = y;  // mesma base vertical
+    int cx = x;
+
+    std::vector<std::string> headers = { "Nome", "High Score", "N. Jogos" };
+
+    for (int col = 0; col < headers.size(); ++col) {
+        cx = x + col * col_width;
+        al_draw_filled_rectangle(cx, cy_header, cx + col_width, cy_header + row_height, corFundo);
+        al_draw_rectangle(cx, cy_header, cx + col_width, cy_header + row_height, corBorda, 1);
+        al_draw_text(fonteTabela, corTexto, cx + col_width / 2,
+            cy_header + row_height / 2 - al_get_font_line_height(fonteTabela) / 2,
+            ALLEGRO_ALIGN_CENTER, headers[col].c_str());
+    }
 
 
     int i = 0;
     for (const auto& jogador : topJogadores) {
-        int cy = y + i * row_height;
+        int cy = y + (i + 1) * row_height;
 
         // Nome
         int cx = x + 0 * col_width;

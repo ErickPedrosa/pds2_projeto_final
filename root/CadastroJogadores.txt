@@ -1,5 +1,5 @@
 Teste1,1,3
-Erick,3,10
+Erick,4,10
 Euuuuu,1,2
 Jogador3267,2,0
 Teste 5,1,5
