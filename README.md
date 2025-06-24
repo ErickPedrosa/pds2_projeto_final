@@ -21,13 +21,21 @@
 - Botao e CaixaDeTexto: Elementos de interface gráfica usados nas telas para interações com o usuário.
 - IRenderizavel e ObjetoJogo: Classes base/abstratas para padronizar objetos que são desenhados na tela ou fazem parte da lógica do jogo.
 
+### Extras
+- Música de fundo
+- Efeito sonoro de voo do pássaro
+
 ## Instrução de Instalação
 ### Pré-requisitos
  - Instalar a biblioteca Allegro => [tutorial de instalação](https://github.com/liballeg/allegro_wiki/wiki/Quickstart)
 - Compilador C++ 
 
 ## Instruções de Execução
+### Para Compilar:
+```make```
 
+### Para Executar:
+```./bin/jogo```
 ## Licença
  MIT License
 ## Autores: Erick Pedrosa, Samara Neto, Silvia Peres, Lucas Maciel
