@@ -18,7 +18,7 @@ private:
 
     float velocidade;
     ALLEGRO_BITMAP* sprite;
-    ALLEGRO_BITMAP* sprite_chao;
+   
 
     std::vector<Obstaculo*> obstaculos;
 
