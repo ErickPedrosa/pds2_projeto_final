@@ -127,7 +127,7 @@ int main(int argc, char** argv) {
 			int _x = evento.mouse.x;
 			int _y = evento.mouse.y;
 
-			std::cout << "X: " << _x << "Y: " << _y << std::endl; //x e y impressos no terminal para fins de debug e testes
+			//std::cout << "X: " << _x << "Y: " << _y << std::endl; //x e y impressos no terminal para fins de debug e testes
 
 			int telaDestino = telaAtual; //Por default se mant�m;
 
