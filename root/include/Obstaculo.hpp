@@ -16,6 +16,7 @@ private:
 
 public:
     Obstaculo(int x_inicial, int altura_tela, float abertura);
+    ~Obstaculo();
 
     void atualizar(int velocidade);
     void Render(float display_height, float display_width);

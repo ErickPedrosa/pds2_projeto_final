@@ -86,7 +86,14 @@ float Passaro::getY() const {
     return dy;
 }
 
+float Passaro::getX_atual() const { return this->x_atual; }
+float Passaro::getY_atual() const { return this->y_atual; }
+
+
+
+
 void Passaro::Restart() {
     x_atual = 0;
     y_atual = 0;
 }
+
