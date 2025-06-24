@@ -51,3 +51,11 @@ silvia,2,8
 Jogador8340,1,0
 SILVIA,1,2
 Jogador6573,1,0
+Jogador9690,1,2
+Jogador3285,1,6
+Jogador4497,1,5
+Jogador6535,1,7
+Jogador9252,2,7
+Jogador9748,4,4
+Jogador1287,2,6
+Jogador1675,1,2

@@ -11,7 +11,7 @@ TelaDeJogo::TelaDeJogo() {
     }
 
     sprite = al_load_bitmap("assets/background-day.png");
-    sprite_chao = al_load_bitmap("assets/base.png");
+    
 
     escala_w = 1.0;
     escala_h = 1.0;
@@ -63,8 +63,7 @@ void TelaDeJogo::Render(float display_height, float display_width) {
 
     int img_w = al_get_bitmap_width(sprite);
     int img_h = al_get_bitmap_height(sprite);
-    int img_w_chao = al_get_bitmap_width(sprite_chao);
-    int img_h_chao = al_get_bitmap_height(sprite_chao);
+    
 
 
 
@@ -83,14 +82,6 @@ void TelaDeJogo::Render(float display_height, float display_width) {
             dx, dy,
             img_w * escala_w,
             img_h * escala_h,
-            0
-        );
-        al_draw_scaled_bitmap(
-            sprite_chao,
-            0, 0, img_w_chao, img_h_chao,
-            dx, display_height - img_h_chao * escala_h,
-            img_w_chao * escala_w,
-            img_h_chao * escala_h,
             0
         );
     }
