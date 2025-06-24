@@ -21,6 +21,9 @@ public:
 	float getY() const override;
 	float getX() const override;
 
+	float getX_atual() const;
+	float getY_atual() const;
+
 };
 
 #endif
