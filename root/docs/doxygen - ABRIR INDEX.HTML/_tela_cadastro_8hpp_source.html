@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PDS 2 PROJETO FINAL: Código-Fonte de root/include/TelaCadastro.hpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">PDS 2 PROJETO FINAL
+   </div>
+   <div id="projectbrief">Flappy Bird desenvolvido em c++ com a biblioteca allegro</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Busca',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('_tela_cadastro_8hpp_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">TelaCadastro.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_tela_cadastro_8hpp.html">Ir para a documentação desse arquivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef TELACADASTRO_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define TELACADASTRO_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;allegro5/allegro.h&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;allegro5/allegro_image.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_objeto_jogo_8hpp.html">../include/ObjetoJogo.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_botao_8hpp.html">../include/Botao.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;<a class="code" href="_caixa_de_texto_8hpp.html">../include/CaixaDeTexto.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;allegro5/allegro_ttf.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;allegro5/allegro_font.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_tela_cadastro.html">   13</a></span><span class="keyword">class </span><a class="code hl_function" href="class_tela_cadastro.html#a5cfefa462c4bb3e369f6eb1d4d8f55d8">TelaCadastro</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_objeto_jogo.html">ObjetoJogo</a> {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_class" href="class_caixa_de_texto.html">CaixaDeTexto</a>* input;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_struct" href="struct_botao.html">Botao</a>* logar;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_struct" href="struct_botao.html">Botao</a>* voltar;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    ALLEGRO_FONT* fonte;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_function" href="class_tela_cadastro.html#a5cfefa462c4bb3e369f6eb1d4d8f55d8">TelaCadastro</a>(<span class="keywordtype">float</span> display_height, <span class="keywordtype">float</span> display_width);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_function" href="class_tela_cadastro.html#a65fcef309c20af8a07cdb781951a8af9">~TelaCadastro</a>();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_tela_cadastro.html#a2d139ea4aad22b6164515f1b07968b22">Render</a>(<span class="keywordtype">float</span> display_height, <span class="keywordtype">float</span> display_width) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_tela_cadastro.html#a6fdf75fb0a60d5688833e25faebf5745">VerificaClique</a>(<span class="keywordtype">int</span> _x, <span class="keywordtype">int</span> _y);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_tela_cadastro.html#a9d12e32ef0e13f5ca9768948c5a1e4be">VerificaDigitacao</a>(ALLEGRO_EVENT evento);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    std::string <a class="code hl_function" href="class_tela_cadastro.html#aa59c1fc4ae78c6b4cdc2123794ab902e">GetInput</a>();</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>};</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="a_botao_8hpp_html"><div class="ttname"><a href="_botao_8hpp.html">Botao.hpp</a></div></div>
+<div class="ttc" id="a_caixa_de_texto_8hpp_html"><div class="ttname"><a href="_caixa_de_texto_8hpp.html">CaixaDeTexto.hpp</a></div></div>
+<div class="ttc" id="a_objeto_jogo_8hpp_html"><div class="ttname"><a href="_objeto_jogo_8hpp.html">ObjetoJogo.hpp</a></div></div>
+<div class="ttc" id="aclass_caixa_de_texto_html"><div class="ttname"><a href="class_caixa_de_texto.html">CaixaDeTexto</a></div><div class="ttdef"><b>Definição</b> CaixaDeTexto.hpp:15</div></div>
+<div class="ttc" id="aclass_objeto_jogo_html"><div class="ttname"><a href="class_objeto_jogo.html">ObjetoJogo</a></div><div class="ttdef"><b>Definição</b> ObjetoJogo.hpp:12</div></div>
+<div class="ttc" id="aclass_tela_cadastro_html_a2d139ea4aad22b6164515f1b07968b22"><div class="ttname"><a href="class_tela_cadastro.html#a2d139ea4aad22b6164515f1b07968b22">TelaCadastro::Render</a></div><div class="ttdeci">void Render(float display_height, float display_width) override</div><div class="ttdef"><b>Definição</b> TelaCadastro.cpp:126</div></div>
+<div class="ttc" id="aclass_tela_cadastro_html_a5cfefa462c4bb3e369f6eb1d4d8f55d8"><div class="ttname"><a href="class_tela_cadastro.html#a5cfefa462c4bb3e369f6eb1d4d8f55d8">TelaCadastro::TelaCadastro</a></div><div class="ttdeci">TelaCadastro(float display_height, float display_width)</div><div class="ttdef"><b>Definição</b> TelaCadastro.cpp:20</div></div>
+<div class="ttc" id="aclass_tela_cadastro_html_a65fcef309c20af8a07cdb781951a8af9"><div class="ttname"><a href="class_tela_cadastro.html#a65fcef309c20af8a07cdb781951a8af9">TelaCadastro::~TelaCadastro</a></div><div class="ttdeci">~TelaCadastro()</div><div class="ttdef"><b>Definição</b> TelaCadastro.cpp:78</div></div>
+<div class="ttc" id="aclass_tela_cadastro_html_a6fdf75fb0a60d5688833e25faebf5745"><div class="ttname"><a href="class_tela_cadastro.html#a6fdf75fb0a60d5688833e25faebf5745">TelaCadastro::VerificaClique</a></div><div class="ttdeci">int VerificaClique(int _x, int _y)</div><div class="ttdef"><b>Definição</b> TelaCadastro.cpp:94</div></div>
+<div class="ttc" id="aclass_tela_cadastro_html_a9d12e32ef0e13f5ca9768948c5a1e4be"><div class="ttname"><a href="class_tela_cadastro.html#a9d12e32ef0e13f5ca9768948c5a1e4be">TelaCadastro::VerificaDigitacao</a></div><div class="ttdeci">void VerificaDigitacao(ALLEGRO_EVENT evento)</div><div class="ttdef"><b>Definição</b> TelaCadastro.cpp:112</div></div>
+<div class="ttc" id="aclass_tela_cadastro_html_aa59c1fc4ae78c6b4cdc2123794ab902e"><div class="ttname"><a href="class_tela_cadastro.html#aa59c1fc4ae78c6b4cdc2123794ab902e">TelaCadastro::GetInput</a></div><div class="ttdeci">std::string GetInput()</div><div class="ttdef"><b>Definição</b> TelaCadastro.cpp:73</div></div>
+<div class="ttc" id="astruct_botao_html"><div class="ttname"><a href="struct_botao.html">Botao</a></div><div class="ttdef"><b>Definição</b> Botao.hpp:14</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_ea278d3e246754e8da1163a8e6517c08.html">root</a></li><li class="navelem"><a href="dir_b7fc3d917668db2ccfe36cce0d7fd0a3.html">include</a></li><li class="navelem"><a href="_tela_cadastro_8hpp.html">TelaCadastro.hpp</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>
