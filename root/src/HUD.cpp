@@ -1,7 +1,12 @@
+/**Exibe informações da partida: score, tempo e nome do jogador
+- Atualiza os dados em tempo real
+- Renderiza o HUD na tela*/
+
 #include "../include/HUD.hpp"
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_font.h>
 #include <iostream>
+
 
 HUD::HUD() {
 	score = 0;
@@ -50,3 +55,4 @@ void HUD::Render(float display_height, float display_width) {
 	
 
 }
+

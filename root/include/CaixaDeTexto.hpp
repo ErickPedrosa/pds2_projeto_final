@@ -1,3 +1,8 @@
+/**Armazena texto digitado
+- Identifica se foi clicada
+- Controla estado de ativacao
+- Desenha interface de entrada de texto*/
+
 #ifndef CAIXADETEXTO_H
 #define CAIXADETEXTO_H
 
@@ -70,3 +75,4 @@ public:
 
 
 #endif
+

@@ -1,3 +1,8 @@
+/**Exibe campos de texto e botoes "Logar" e "Voltar"
+- Detecta cliques e digitacao
+- Retorna nome inserido
+- Gera nome placeholder aleatorio.*/
+
 #include "../include/TelaCadastro.hpp"
 #include <iostream>
 #include <cstdlib>
@@ -167,3 +172,4 @@ void TelaCadastro::Render(float display_height, float display_width) {
 
 
 }
+

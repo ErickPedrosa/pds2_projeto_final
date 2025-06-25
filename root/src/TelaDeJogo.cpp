@@ -1,6 +1,12 @@
+/** -Executa o loop da partida
+- Atualiza a posicao do passaro
+- Verifica colisoes
+- Controla o score e o tempo*/
+
 #include "../include/TelaDeJogo.hpp"
 #include <iostream>
 #include <cstdlib>
+
 
 TelaDeJogo::TelaDeJogo() {
     x_atual = 0;

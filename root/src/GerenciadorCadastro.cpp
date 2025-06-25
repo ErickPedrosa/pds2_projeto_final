@@ -1,3 +1,8 @@
+/**Realiza login dejogador
+- Atualiza pontuação e numero de partidas
+- Retorna ranking dos top jogadores
+- Acessa e modifica arquivos de dados de jogadores   */
+
 #include "../include/GerenciadorCadastro.hpp"
 #include <iostream>
 #include <fstream>
@@ -184,3 +189,4 @@ std::vector<std::tuple<std::string, int, int>> GerenciadorCadastro::TopNJogadore
 GerenciadorCadastro::GerenciadorCadastro() : num_jogos_jogador_atual(0), nome_jogador_atual(""), pontuacao_maxima_jogador_atual(-1)
 {
 }
+

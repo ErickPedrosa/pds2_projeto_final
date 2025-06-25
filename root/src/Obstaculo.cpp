@@ -1,6 +1,15 @@
+/**Gera e posiciona obstáculos
+- Atualiza posicao horizontal (movimento)
+- Renderiza os canos superiores e inferiores
+- Verifica se saiu da tela
+- Reseta posicao com nova abertura
+- Informa abertura e posicao vertical
+- Controla se o score ja foi contabilizado*/
+
 #include "../include/Obstaculo.hpp"
 #include <iostream>
 #include <cstdlib>
+
 
 Obstaculo::Obstaculo(int x_inicial, int altura_tela, float abertura) {
     x_atual = x_inicial;

@@ -1,3 +1,7 @@
+/**Exibe o fundo da tela de placar
+- Mostra uma tabela com os melhores jogadores
+- Verifica cliques no botao "Voltar"*/
+
 #include "../include/TelaPlacar.hpp"
 #include <iostream>
 #include <tuple>
@@ -178,3 +182,4 @@ void TelaPlacar::Render(float display_height, float display_width) {
 
 
 }
+

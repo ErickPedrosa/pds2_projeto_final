@@ -1,9 +1,13 @@
+/** Fornece interface para posicao e dimensoes de elementos do jogo
+- Implementa base comum para objetos renderizaveis*/
+
 #ifndef GAMEOBJ_H
 #define GAMEOBJ_H
 
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include "IRenderizavel.hpp"
+
 
 class ObjetoJogo : public  IRenderizavel{
 protected:
@@ -20,3 +24,4 @@ public:
 };
 
 #endif
+

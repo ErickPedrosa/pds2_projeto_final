@@ -1,3 +1,8 @@
+/** Exibe fundo e imagem "Game Over"
+- Mostra botoes "Reiniciar" e "Menu Inicial"
+- Verifica cliques do jogador*/
+
+
 #include "../include/TelaGameOver.hpp"
 #include <iostream>
 #include <allegro5/allegro_ttf.h>
@@ -105,3 +110,4 @@ void TelaGameOver::Render(float display_height, float display_width) {
  
 
 }
+
