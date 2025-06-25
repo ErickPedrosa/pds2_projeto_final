@@ -1,3 +1,7 @@
+/**- Exibe a tela inicial com fundo animado
+- Cria e desenha os botões "Jogar", "Placar", "Sair"
+- Verifica cliques e direciona a próxima tela*/
+
 #include "../include/TelaInicial.hpp"
 #include <iostream>
 #include <allegro5/allegro_ttf.h>
@@ -140,6 +144,3 @@ void TelaInicial::Render(float display_height, float display_width) {
 
 }
 
-/**- Exibe a tela inicial com fundo animado
-- Cria e desenha os botões "Jogar", "Placar", "Sair"
-- Verifica cliques e direciona a próxima tela*/

@@ -1,41 +1,43 @@
 # Projeto Final de PDS II
 
-## DescriÁ„o do Projeto
-  Clone do jogo Flappy Bird, feito para o projeto pr·tico final da disciplina ProgramaÁ„o e Desenvolvimento de Software II (PDS II) do curso de Sistemas de InformaÁ„o da Universidade Federal de Minas Gerais (UFMG).
-  Projeto desenvolvido em:
-   - C++
-   - Biblioteca Allegro: (https://liballeg.org/)
+## Descri√ß√£o do Projeto
+  Clone do jogo Flappy Bird, feito para o projeto pr√°tico final da disciplina Programa√ß√£o e Desenvolvimento de Software II (PDS II) do curso de Sistemas de Informa√ß√£o da Universidade Federal de Minas Gerais (UFMG).
+Projeto desenvolvido em:
+- C++
+- Biblioteca Allegro: https://liballeg.org/
 
-  O objetivo do jogo È controlar um p·ssaro que deve voar entre obst·culos (canos) sem colidir com eles. A cada sucesso, o jogador ganha +1 ponto e o jogo termina quando o p·ssaro colide com os obst·culos ou com a tela de jogo. Para jogar, basta o usu·rio digitar seu nome e clicar para iniciar. O "voo" do p·ssaro È controlado pelo usu·rio atravÈs da tecla "espaÁo". 
+O objetivo do jogo √© controlar um p√°ssaro que deve voar entre obst√°culos (canos) sem colidir com eles. A cada sucesso, o jogador ganha +1 ponto e o jogo termina quando o p√°ssaro colide com os obst√°culos ou com a tela de jogo. Para jogar, basta o usu√°rio digitar seu nome e clicar para iniciar. O "voo" do p√°ssaro √© controlado pelo usu√°rio atrav√©s da tecla "espa√ßo".
 
 ## Estrutura do Projeto
-  O programa foi dividido em v·rios mÛdulos, cada um com uma responsabilidade especÌfica, visando aplicar os conceitos de ProgramaÁ„o Orientada a Objetos (POO) e facilitar a manutenÁ„o do cÛdigo.
+  O programa foi dividido em v√°rios m√≥dulos, cada um com uma responsabilidade espec√≠fica, visando aplicar os conceitos de Programa√ß√£o Orientada a Objetos (POO) e facilitar a manuten√ß√£o do c√≥digo.
    
-### MÛdulos do Projeto
+### M√≥dulos do Projeto
 - TelaInicial, TelaCadastro, TelaPlacar, TelaDeJogo, TelaGameOver: Controlam as diferentes telas do jogo.
-- Passaro: Classe que representa o jogador (p·ssaro) no jogo, contendo sua posiÁ„o, fÌsica e renderizaÁ„o.
-- Obstaculo: Classe dos obst·culos (canos) com movimentaÁ„o e controle de colis„o.
-- Colisao: Respons·vel por detectar colisıes entre o p·ssaro, obst·culos e os limites do jogo.
-- HUD: Exibe informaÁıes como pontuaÁ„o, tempo e nome do jogador durante o jogo.
+- Passaro: Classe que representa o jogador (p√°ssaro) no jogo, contendo sua posi√ß√£o, f√≠sica e renderiza√ß√£o.
+- Obstaculo: Classe dos obst√°culos (canos) com movimenta√ß√£o e controle de colis√£o.
+- Colisao: Respons√°vel por detectar colis√µes entre o p√°ssaro, obst√°culos e os limites do jogo.
+- HUD: Exibe informa√ß√µes como pontua√ß√£o, tempo e nome do jogador durante o jogo.
 - GerenciadorCadastro: Controla o armazenamento de jogadores e seus dados.
-- Botao e CaixaDeTexto: Elementos de interface gr·fica usados nas telas para interaÁıes com o usu·rio.
-- IRenderizavel e ObjetoJogo: Classes base/abstratas para padronizar objetos que s„o desenhados na tela ou fazem parte da lÛgica do jogo.
+- Botao e CaixaDeTexto: Elementos de interface gr√°fica usados nas telas para intera√ß√µes com o usu√°rio.
+- IRenderizavel e ObjetoJogo: Classes base/abstratas para padronizar objetos que s√£o desenhados na tela ou fazem parte da l√≥gica do jogo.
 
 ### Extras
-- M˙sica de fundo
-- Efeito sonoro de voo do p·ssaro
+- M√∫sica de fundo
+- Efeito sonoro de voo do p√°ssaro
 
-## InstruÁ„o de InstalaÁ„o
-### PrÈ-requisitos
- - Instalar a biblioteca Allegro => [tutorial de instalaÁ„o](https://github.com/liballeg/allegro_wiki/wiki/Quickstart)
+## Instru√ß√£o de Instala√ß√£o
+### Pr√©-requisitos
+ - Instalar a biblioteca Allegro => [tutorial de instala√ß√£o](https://github.com/liballeg/allegro_wiki/wiki/Quickstart)
 - Compilador C++ 
 
-## InstruÁıes de ExecuÁ„o
+## Instru√ß√µes de Execu√ß√£o
+
+Fa√ßa os seguintes passos no terminal dentro da pasta root:
 ### Para Compilar:
 ```make```
 
 ### Para Executar:
 ```./bin/jogo```
-## LicenÁa
+## Licen√ßa
  MIT License
 ## Autores: Erick Pedrosa, Samara Neto, Silvia Peres, Lucas Maciel

@@ -1,3 +1,9 @@
+/**Renderiza o pássaro com escala
+- Atualiza posição vertical com base no estado do jogo
+- Fornece posição e tamanho
+- Reinicia posição e o início da partida*/
+
+
 #include "../include/Passaro.hpp"
 #include <iostream>
 
@@ -100,7 +106,3 @@ void Passaro::Restart() {
     y_atual = 0;
 }
 
-/**Renderiza o pássaro com escala
-- Atualiza posição vertical com base no estado do jogo
-- Fornece posição e tamanho
-- Reinicia posição e o início da partida*/

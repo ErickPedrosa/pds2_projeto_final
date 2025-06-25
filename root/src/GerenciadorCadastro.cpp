@@ -1,3 +1,8 @@
+/**Realiza login dejogador
+- Atualiza pontuação e número de partidas
+- Retorna ranking dos top jogadores
+- Acessa e modifica arquivos de dados de jogadores   */
+
 #include "../include/GerenciadorCadastro.hpp"
 #include <iostream>
 #include <fstream>
@@ -185,7 +190,3 @@ GerenciadorCadastro::GerenciadorCadastro() : num_jogos_jogador_atual(0), nome_jo
 {
 }
 
-/**Realiza login dejogador
-- Atualiza pontuação e número de partidas
-- Retorna ranking dos top jogadores
-- Acessa e modifica arquivos de dados de jogadores   */

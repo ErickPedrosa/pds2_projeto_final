@@ -1,6 +1,15 @@
+/**Gera e posiciona obstáculos
+- Atualiza posição horizontal (movimento)
+- Renderiza os canos superiores e inferiores
+- Verifica se saiu da tela
+- Reseta posição com nova abertura
+- Informa abertura e posição vertical
+- Controla se o score já foi contabilizado*/
+
 #include "../include/Obstaculo.hpp"
 #include <iostream>
 #include <cstdlib>
+
 
 Obstaculo::Obstaculo(int x_inicial, int altura_tela, float abertura) {
     x_atual = x_inicial;
@@ -90,10 +99,3 @@ bool Obstaculo::jaContabilizado() const {
 void Obstaculo::marcarComoContabilizado() {
     pontoContabilizado = true;
 }
-/**Gera e posiciona obstáculos
-- Atualiza posição horizontal (movimento)
-- Renderiza os canos superiores e inferiores
-- Verifica se saiu da tela
-- Reseta posição com nova abertura
-- Informa abertura e posição vertical
-- Controla se o score já foi contabilizado*/

@@ -1,3 +1,5 @@
+/**Define interface para objetos desenhados nas telas com a função Render())*/
+
 #ifndef IRENDERIZAVEL_H
 #define IRENDERIZAVEL_H
 
@@ -18,4 +20,3 @@ public:
 #endif
 
 
-/**Define interface para objetos desenhados nas telas com a função Render())*/
