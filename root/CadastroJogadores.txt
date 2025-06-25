@@ -70,3 +70,4 @@ Jogador5197,1,0
 Jogador7007,1,3
 Jogador1153,2,3
 Jogador1007,1,4
+Jogador4533,1,0

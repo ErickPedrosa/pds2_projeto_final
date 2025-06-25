@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\Alguém\OneDrive\Documentos\GitHub\pds2_projeto_final\x64\Release\pds2_projeto_final.exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\Alguém\OneDrive\Documentos\GitHub\pds2_projeto_final\root\src\Obstaculo.cpp</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\Alguém\OneDrive\Documentos\GitHub\pds2_projeto_final\root\include\Obstaculo.hpp</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
