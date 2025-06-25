@@ -18,3 +18,6 @@ bool Colisao::colidirO(const Passaro* flappy, const Obstaculo* cano) {
             (flappy->getY() < cano->getYGap() ||  
              flappy->getY() + flappy->getHeight() > cano->getYGap() + cano->getAbertura()));  
 }
+
+/**Verifica se o Pássaro colidiu com a tela (colidirT)
+- Verifica se o Pássaro colidiu com um Obstaculo (colidirO)*/

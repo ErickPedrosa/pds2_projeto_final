@@ -53,3 +53,6 @@ struct Botao
 
 
 #endif
+
+/** Desenha o botão com aparência estilizada (GerarBotao)
+- Verifica se foi clicado com coordenadas do mouse (FoiClicado)*/

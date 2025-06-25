@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstdlib>
 
+
 TelaDeJogo::TelaDeJogo() {
     x_atual = 0;
     y_atual = 0;
@@ -147,3 +148,7 @@ float TelaDeJogo::getWidth() const {
 }
 
 
+/** -Executa o loop da partida
+- Atualiza a posição do pássaro
+- Verifica colisões
+- Controla o score e o tempo*/

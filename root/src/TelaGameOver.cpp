@@ -105,3 +105,7 @@ void TelaGameOver::Render(float display_height, float display_width) {
  
 
 }
+
+/** Exibe fundo e imagem "Game Over"
+- Mostra botões "Reiniciar" e "Menu Inicial"
+- Verifica cliques do jogador*/

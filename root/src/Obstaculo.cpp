@@ -90,3 +90,10 @@ bool Obstaculo::jaContabilizado() const {
 void Obstaculo::marcarComoContabilizado() {
     pontoContabilizado = true;
 }
+/**Gera e posiciona obstáculos
+- Atualiza posição horizontal (movimento)
+- Renderiza os canos superiores e inferiores
+- Verifica se saiu da tela
+- Reseta posição com nova abertura
+- Informa abertura e posição vertical
+- Controla se o score já foi contabilizado*/

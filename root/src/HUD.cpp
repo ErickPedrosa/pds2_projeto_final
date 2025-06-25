@@ -50,3 +50,7 @@ void HUD::Render(float display_height, float display_width) {
 	
 
 }
+
+/**Exibe informações da partida: score, tempo e nome do jogador
+- Atualiza os dados em tempo real
+- Renderiza o HUD na tela*/

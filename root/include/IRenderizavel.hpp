@@ -16,3 +16,6 @@ public:
 };
 
 #endif
+
+
+/**Define interface para objetos desenhados nas telas com a função Render())*/

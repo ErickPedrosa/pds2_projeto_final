@@ -184,3 +184,8 @@ std::vector<std::tuple<std::string, int, int>> GerenciadorCadastro::TopNJogadore
 GerenciadorCadastro::GerenciadorCadastro() : num_jogos_jogador_atual(0), nome_jogador_atual(""), pontuacao_maxima_jogador_atual(-1)
 {
 }
+
+/**Realiza login dejogador
+- Atualiza pontuação e número de partidas
+- Retorna ranking dos top jogadores
+- Acessa e modifica arquivos de dados de jogadores   */

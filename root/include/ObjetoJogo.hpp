@@ -20,3 +20,6 @@ public:
 };
 
 #endif
+
+/** Fornece interface para posição e dimensões de elementos do jogo
+- Implementa base comum para objetos renderizáveis*/

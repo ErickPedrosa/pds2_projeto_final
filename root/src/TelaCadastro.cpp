@@ -167,3 +167,8 @@ void TelaCadastro::Render(float display_height, float display_width) {
 
 
 }
+
+/**Exibe campos de texto e botões "Logar" e "Voltar"
+- Detecta cliques e digitação
+- Retorna nome inserido
+- Gera nome placeholder aleatório.*/
