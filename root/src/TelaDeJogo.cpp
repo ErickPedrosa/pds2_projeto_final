@@ -7,7 +7,6 @@
 #include <iostream>
 #include <cstdlib>
 
-
 TelaDeJogo::TelaDeJogo() {
     x_atual = 0;
     y_atual = 0;
@@ -17,11 +16,9 @@ TelaDeJogo::TelaDeJogo() {
     }
 
     sprite = al_load_bitmap("assets/background-day.png");
-    
 
     escala_w = 1.0;
     escala_h = 1.0;
-
     velocidade = 2.0f;
 
     for (int i = 0; i < 3; i++) {
@@ -34,21 +31,21 @@ TelaDeJogo::TelaDeJogo() {
 
 TelaDeJogo::~TelaDeJogo() {
     al_destroy_bitmap(sprite);
-    for (auto o : obstaculos) delete o;
+    for (auto o : obstaculos) {
+        delete o;
+    }
     obstaculos.clear();
     delete hud;
 }
 
 std::vector<Obstaculo*>& TelaDeJogo::getObstaculos() { return obstaculos; }
 
-
 void TelaDeJogo::Render(float display_height, float display_width, int op) {
-
-    if (op == 1)
-    {
-        for (auto ob : obstaculos) {
-            delete ob;
-            
+    if (op == 1) {
+        for (Obstaculo* ob : obstaculos) {
+            if (ob != nullptr) {
+                delete ob;
+            }
         }
         obstaculos.clear();
 
@@ -57,21 +54,13 @@ void TelaDeJogo::Render(float display_height, float display_width, int op) {
             obstaculos.push_back(new Obstaculo(x_pos, 800, 200));
         }
     }
-    
+
     this->Render(display_height, display_width);
-
-
-    }
-
+}
 
 void TelaDeJogo::Render(float display_height, float display_width) {
-
-
     int img_w = al_get_bitmap_width(sprite);
     int img_h = al_get_bitmap_height(sprite);
-    
-
-
 
     int num_tiles = 5;
 
@@ -97,22 +86,11 @@ void TelaDeJogo::Render(float display_height, float display_width) {
     }
 
     hud->Render(display_height, display_width);
-
-
-
-
-
-    
 }
-
-
 
 float TelaDeJogo::getHeight() const {
-   return al_get_bitmap_height(sprite) *this->escala_h;
+    return al_get_bitmap_height(sprite) * this->escala_h;
 }
-
-
-
 
 void TelaDeJogo::atualizar() {
     x_atual -= velocidade;
@@ -121,10 +99,8 @@ void TelaDeJogo::atualizar() {
         x_atual += al_get_bitmap_width(sprite) * escala_w;
     }
 
-    // Define uma distância mínima entre os canos
     float distancia_entre_canos = 400.0f;
 
-    // Acha a maior posição X dos canos (o que está mais à direita)
     float ultima_posicao_x = 0;
     for (auto obs : obstaculos) {
         if (obs->getX() > ultima_posicao_x) {
@@ -138,7 +114,7 @@ void TelaDeJogo::atualizar() {
         if (obs->foraDaTela()) {
             float novaX = ultima_posicao_x + distancia_entre_canos;
             obs->resetar((int)novaX);
-            ultima_posicao_x = novaX; // atualiza para o próximo cano seguir esse
+            ultima_posicao_x = novaX;
         }
     }
 }
@@ -147,9 +123,6 @@ void TelaDeJogo::AtualizarHUD(int novoScore, double novoTempo, const std::string
     hud->Atualizar(novoScore, novoTempo, nome);
 }
 
-
 float TelaDeJogo::getWidth() const {
     return al_get_bitmap_width(sprite) * this->escala_w;
 }
-
-

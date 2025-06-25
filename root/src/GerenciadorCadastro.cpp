@@ -11,10 +11,8 @@
 #include <algorithm>
 #include <tuple>    
 
-
 void GerenciadorCadastro::Logar(std::string nome) {
-    if (!this->joagdorJaExiste(nome)){
-
+    if (!this->joagdorJaExiste(nome)) {
         this->nome_jogador_atual = nome;
         this->num_jogos_jogador_atual = 0;
         this->pontuacao_maxima_jogador_atual = 0;
@@ -22,7 +20,6 @@ void GerenciadorCadastro::Logar(std::string nome) {
 }
 
 void GerenciadorCadastro::AtualizarJogador(int pontuacao) {
-
     if (pontuacao > this->pontuacao_maxima_jogador_atual) {
         this->pontuacao_maxima_jogador_atual = pontuacao;
     }
@@ -48,7 +45,7 @@ void GerenciadorCadastro::AtualizarJogador(int pontuacao) {
                 atualizado = true;
             }
             else {
-                linhas.push_back(linha); 
+                linhas.push_back(linha);
             }
         }
 
@@ -62,7 +59,7 @@ void GerenciadorCadastro::AtualizarJogador(int pontuacao) {
         linhas.push_back(novaLinha);
     }
 
-     std::ofstream* saida = AbrirArquivoParaEscrita();
+    std::ofstream* saida = AbrirArquivoParaEscrita();
     if (!saida->is_open()) {
         delete saida;
         return;
@@ -73,12 +70,7 @@ void GerenciadorCadastro::AtualizarJogador(int pontuacao) {
     }
 
     FecharArquivo(saida);
-
-
-
-
 }
-
 
 std::ifstream* GerenciadorCadastro::AbrirArquivoParaLeitura() {
     std::ifstream* arquivo = new std::ifstream("CadastroJogadores.txt");
@@ -102,7 +94,7 @@ void GerenciadorCadastro::FecharArquivo(std::istream* arquivo) {
     if (arquivo) {
         std::ifstream* arq = dynamic_cast<std::ifstream*>(arquivo);
         if (arq && arq->is_open()) arq->close();
-        delete arq;
+        delete arquivo;  // CORRIGIDO: deleta o ponteiro original
     }
 }
 
@@ -110,7 +102,7 @@ void GerenciadorCadastro::FecharArquivo(std::ostream* arquivo) {
     if (arquivo) {
         std::ofstream* arq = dynamic_cast<std::ofstream*>(arquivo);
         if (arq && arq->is_open()) arq->close();
-        delete arq;
+        delete arquivo;  // CORRIGIDO
     }
 }
 
@@ -132,7 +124,7 @@ bool GerenciadorCadastro::joagdorJaExiste(std::string nome) {
             this->nome_jogador_atual = partes[0];
             this->num_jogos_jogador_atual = std::stoi(partes[1]);
             this->pontuacao_maxima_jogador_atual = std::stoi(partes[2]);
-            
+
             FecharArquivo(arq);
             return true;
         }
@@ -168,15 +160,12 @@ std::vector<std::tuple<std::string, int, int>> GerenciadorCadastro::TopNJogadore
     }
 
     FecharArquivo(arq);
-  
-    // Ordena por pontuaï¿½ï¿½o decrescente
+
     std::sort(jogadores.begin(), jogadores.end(),
-    [](const std::tuple<std::string, int, int>& a, const std::tuple<std::string, int, int>& b) {
-        return std::get<1>(a) > std::get<1>(b);  // maior pontuaÃ§Ã£o primeiro
-    });
+        [](const std::tuple<std::string, int, int>& a, const std::tuple<std::string, int, int>& b) {
+            return std::get<1>(a) > std::get<1>(b);
+        });
 
-
-    // Retorna apenas os n primeiros
     if (static_cast<int>(jogadores.size()) > n) {
         jogadores.resize(n);
     }
@@ -184,9 +173,9 @@ std::vector<std::tuple<std::string, int, int>> GerenciadorCadastro::TopNJogadore
     return jogadores;
 }
 
-
-
-GerenciadorCadastro::GerenciadorCadastro() : num_jogos_jogador_atual(0), nome_jogador_atual(""), pontuacao_maxima_jogador_atual(-1)
+GerenciadorCadastro::GerenciadorCadastro() :
+    num_jogos_jogador_atual(0),
+    nome_jogador_atual(""),
+    pontuacao_maxima_jogador_atual(-1)
 {
 }
-
