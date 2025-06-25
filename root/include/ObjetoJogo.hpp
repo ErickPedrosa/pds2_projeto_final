@@ -1,5 +1,5 @@
-/** Fornece interface para posição e dimensões de elementos do jogo
-- Implementa base comum para objetos renderizáveis*/
+/** Fornece interface para posicao e dimensoes de elementos do jogo
+- Implementa base comum para objetos renderizaveis*/
 
 #ifndef GAMEOBJ_H
 #define GAMEOBJ_H

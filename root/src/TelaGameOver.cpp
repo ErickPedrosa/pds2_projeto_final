@@ -1,5 +1,5 @@
 /** Exibe fundo e imagem "Game Over"
-- Mostra botões "Reiniciar" e "Menu Inicial"
+- Mostra botoes "Reiniciar" e "Menu Inicial"
 - Verifica cliques do jogador*/
 
 

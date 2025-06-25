@@ -1,6 +1,6 @@
 /**Exibe o fundo da tela de placar
 - Mostra uma tabela com os melhores jogadores
-- Verifica cliques no botão "Voltar"*/
+- Verifica cliques no botao "Voltar"*/
 
 #include "../include/TelaPlacar.hpp"
 #include <iostream>

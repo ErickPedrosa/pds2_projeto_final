@@ -1,5 +1,5 @@
-/**Verifica se o Pássaro colidiu com a tela (colidirT)
-- Verifica se o Pássaro colidiu com um Obstaculo (colidirO)*/
+/**Verifica se o Passaro colidiu com a tela (colidirT)
+- Verifica se o Passaro colidiu com um Obstaculo (colidirO)*/
 
 #include "../include/Colisao.hpp"
 #include <allegro5/allegro.h>

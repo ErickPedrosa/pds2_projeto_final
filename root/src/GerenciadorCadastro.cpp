@@ -1,5 +1,5 @@
 /**Realiza login dejogador
-- Atualiza pontuação e número de partidas
+- Atualiza pontuação e numero de partidas
 - Retorna ranking dos top jogadores
 - Acessa e modifica arquivos de dados de jogadores   */
 

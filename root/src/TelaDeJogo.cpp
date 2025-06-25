@@ -1,3 +1,8 @@
+/** -Executa o loop da partida
+- Atualiza a posicao do passaro
+- Verifica colisoes
+- Controla o score e o tempo*/
+
 #include "../include/TelaDeJogo.hpp"
 #include <iostream>
 #include <cstdlib>
@@ -148,7 +153,3 @@ float TelaDeJogo::getWidth() const {
 }
 
 
-/** -Executa o loop da partida
-- Atualiza a posição do pássaro
-- Verifica colisões
-- Controla o score e o tempo*/

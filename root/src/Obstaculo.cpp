@@ -1,10 +1,10 @@
 /**Gera e posiciona obstáculos
-- Atualiza posição horizontal (movimento)
+- Atualiza posicao horizontal (movimento)
 - Renderiza os canos superiores e inferiores
 - Verifica se saiu da tela
-- Reseta posição com nova abertura
-- Informa abertura e posição vertical
-- Controla se o score já foi contabilizado*/
+- Reseta posicao com nova abertura
+- Informa abertura e posicao vertical
+- Controla se o score ja foi contabilizado*/
 
 #include "../include/Obstaculo.hpp"
 #include <iostream>

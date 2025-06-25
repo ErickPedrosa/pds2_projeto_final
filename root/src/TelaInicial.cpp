@@ -1,6 +1,6 @@
 /**- Exibe a tela inicial com fundo animado
-- Cria e desenha os botões "Jogar", "Placar", "Sair"
-- Verifica cliques e direciona a próxima tela*/
+- Cria e desenha os botoes "Jogar", "Placar", "Sair"
+- Verifica cliques e direciona a proxima tela*/
 
 #include "../include/TelaInicial.hpp"
 #include <iostream>

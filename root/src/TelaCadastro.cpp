@@ -1,7 +1,7 @@
-/**Exibe campos de texto e botões "Logar" e "Voltar"
-- Detecta cliques e digitação
+/**Exibe campos de texto e botoes "Logar" e "Voltar"
+- Detecta cliques e digitacao
 - Retorna nome inserido
-- Gera nome placeholder aleatório.*/
+- Gera nome placeholder aleatorio.*/
 
 #include "../include/TelaCadastro.hpp"
 #include <iostream>
